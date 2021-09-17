@@ -31,7 +31,7 @@ function Showcase(props) {
             setShowBooks(response.data.works)
         }
         loadBooks()
-    },[])
+    },[searchTerm])
     const cardElements = showBooks.map((book,idx)=>{
         const imgUrl = `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
         return (
