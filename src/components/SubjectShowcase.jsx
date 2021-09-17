@@ -1,5 +1,6 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import {Link} from 'react-router-dom'
 function SubjectShowcase(props) {    
     
     const responsive = {
@@ -73,10 +74,14 @@ function SubjectShowcase(props) {
 
     ]
     const cardElements = subjectData.map((subject,idx)=>{
+        const linkurl = `/subject/${subject.title}`
         return (
+            
             <div key={idx}>
                 <p>{subject.title}</p>
-                <img src={subject.picture} alt="n/a" />
+                <Link to={linkurl}><img className="subject-img" src={subject.picture} alt="n/a" /></Link>
+                
+                
             </div>
         )
     })
