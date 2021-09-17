@@ -9,7 +9,7 @@ function Routes() {
     return (
         <Switch>
             <Route exact path='/' component={Homepage} />
-            <Route exact path = '/books/:bookID/' render={(props) => <BookShowPage {...props} />} />
+            <Route exact path = '/works/:bookID/' render={(props) => <BookShowPage {...props} />} />
             <Route exact path = '/subject/:subjectName/' render={(props) => <SubjectShowPage {...props} />} />
             <Route exact path = '/author/:authorID/' render={(props) => <AuthorShowPage {...props} />} />
         </Switch>

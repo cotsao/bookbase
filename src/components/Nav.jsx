@@ -27,7 +27,7 @@ function Nav() {
             }
         }
 
-    }, [searchText,bookSearch]);
+    }, [searchText]);
     const onChangeHandler = (text) => {
         setsearchText(text)             
     }
@@ -36,9 +36,9 @@ function Nav() {
         setSuggestions([])
     }
     return (
-        <header>
+        <header className="lg-container">
             <nav>
-                <ul>
+                <ul className="flex">
                     <li>bookbase</li>
                     <input type="text"
                         onChange={e => onChangeHandler(e.target.value)}

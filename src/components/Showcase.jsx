@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Carousel from 'react-multi-carousel';
+import {Link} from 'react-router-dom'
 import 'react-multi-carousel/lib/styles.css';
 const axios = require('axios');
 function Showcase(props) {
@@ -37,7 +38,7 @@ function Showcase(props) {
         return (
             <div key={idx}>
                 <p>{book.title}</p>
-                <img src={imgUrl} alt="n/a" />
+                <Link to={book.key}><img src={imgUrl} alt="n/a" /></Link>
             </div>
         )
     })

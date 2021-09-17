@@ -4,5 +4,16 @@
   width: calc(100% - 4rem);
   max-width: 72rem;
 }
+.sml-container{
+  max-width:25%
+}
+.lg-container{
+  width:100%;
+}
+.flex{
+  display:flex;
+  justify-content: space-around;
+}
+
 /* ----------------------------------- nav ---------------------------------- */
 /* ---------------------------------- about --------------------------------- */
