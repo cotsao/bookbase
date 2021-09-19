@@ -36,9 +36,17 @@ function Showcase(props) {
     const cardElements = showBooks.map((book,idx)=>{
         const imgUrl = `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
         return (
-            <div key={idx}>
-                <p>{book.title}</p>
-                <Link to={book.key}><img src={imgUrl} alt="n/a" /></Link>
+            <div className="card" key={idx}>
+                <article style={{maxHeight:250}} className="content">
+                    <Link to={book.key}>
+                        <img style={{maxHeight:250}} className="content-img book-img" src={imgUrl} alt="N/A" />
+                    </Link>
+                    <div className="context-text">
+                        <h3 className="title">
+                            {book.title}
+                        </h3>
+                    </div>
+                </article>
             </div>
         )
     })
@@ -48,6 +56,7 @@ function Showcase(props) {
             <Carousel 
                 responsive={responsive}
                 infinite={true}
+                arrows={false}
             >
                 {cardElements}
             </Carousel>

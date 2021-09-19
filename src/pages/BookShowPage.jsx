@@ -27,13 +27,11 @@ function BookShowPage(props){
     useEffect(() => {
         const bookUrl = `https://openlibrary.org/works/${props.match.params.bookID}.json`
         const loadBook = async ()=>{
-            const response = await axios.get(bookUrl) .catch(function (error) {
+            const response = await axios.get(bookUrl).catch(function (error) {
                 console.log(error);
             });
             setBook(response.data)
-            console.log("loop")
-            
-        }
+            }
         loadBook()
     },[props.match.params.bookID]);
     let images = []

@@ -15,48 +15,10 @@
   justify-content: space-around;
 }
 
-/* ----------------------------------- nav ---------------------------------- */
-.suggestion-input{
-  width:10rem;
-}
-.suggestion-container{
-display: block;
-position: absolute;
-width:10rem;
-/* border: 1px solid #aaa; */
-background-color: #fff;
-z-index: 2;
-}
-.suggestion-box{
-  width:10rem;
-  border-bottom: 1px solid #aaa;
-  border-right: 1px solid #aaa;
-  border-left:1px solid #aaa;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size:0.75rem;
-  cursor: pointer;
-}
-/* ---------------------------------- about --------------------------------- */
-/* ----------------------------- subjectshowcase ---------------------------- */
-.subject-img{
-  max-width: 5rem;
-}
-/* ---------------------------- subject showpage ---------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                 grid effect                                */
+/* -------------------------------------------------------------------------- */
 
-.grid-body {
-  margin: 0 auto;
-  width: calc(100% - 4rem);
-  max-width: 72rem;
-  line-height: 0;   
-  -webkit-column-count: 5;
-  -webkit-column-gap:   0px;
-  -moz-column-count:    5;
-  -moz-column-gap:      0px;
-  column-count:         5;
-  column-gap:           0px;
-}
 .card{
   height:auto;
 }
@@ -123,4 +85,63 @@ z-index: 2;
 
 .content:hover .content-img .movie-img {
   filter: blur(2px);
+}
+
+
+/* ----------------------------------- nav ---------------------------------- */
+.suggestion-input{
+  width:10rem;
+}
+.suggestion-container{
+display: block;
+position: absolute;
+width:10rem;
+/* border: 1px solid #aaa; */
+background-color: #fff;
+z-index: 2;
+}
+.suggestion-box{
+  width:10rem;
+  border-bottom: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  border-left:1px solid #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size:0.75rem;
+  cursor: pointer;
+}
+/* ---------------------------------- about --------------------------------- */
+/* ----------------------------- subjectshowcase ---------------------------- */
+.subject-img{
+  max-width: 5rem;
+}
+/* ---------------------------- subject showpage ---------------------------- */
+
+.grid-body {
+  margin: 0 auto;
+  width: calc(100% - 4rem);
+  max-width: 72rem;
+  
+  -webkit-column-count: 5;
+  -webkit-column-gap:   0px;
+  -moz-column-count:    5;
+  -moz-column-gap:      0px;
+  column-count:         5;
+  column-gap:           0px;
+}
+.info-card{
+  position:absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+  
+  top:0%;
+  
+  z-index:3;
+  background:white;
+  padding:10px;
+  border:1px solid grey;
+  box-shadow: 0 0 2px 2px grey;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
