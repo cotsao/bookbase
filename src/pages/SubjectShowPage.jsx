@@ -13,7 +13,6 @@ function SubjectShowPage(props) {
                 .catch(function (error) {
                     console.log(error)
                 })
-            console.log(response.data)
             setSubject(response.data.works)
         }
         loadSubject()
@@ -28,7 +27,6 @@ function SubjectShowPage(props) {
         setDelayHandler(setTimeout(() => {
             const loadBook = async () =>{
                 const response = await axios.get(bookUrl).catch(function (error){console.log(error)})
-                console.log(response.data)
                 let descript ="" 
                 if (response.data.description.value){
                     descript = response.data.description.value
@@ -44,7 +42,7 @@ function SubjectShowPage(props) {
                     setInfoCard(cardInfo)
             }
             loadBook()
-            
+            return true;
         }, 500))
     }
     const allSubjectBooks = subject.map((book, idx) => {
@@ -57,10 +55,10 @@ function SubjectShowPage(props) {
         }
         return (
             <div className="card" key={idx}>
-                <article className="content">
+                <article className="card-content">
                     <Link to={book.key}>
                         <img
-                            className="content-img book-img"
+                            className="card-img "
                             src={imgUrl}
                             alt="N/A"
                             onMouseOver={() => { handleHover(book) }}
@@ -68,23 +66,19 @@ function SubjectShowPage(props) {
                             value={book}
                         />
                     </Link>
-                                     
+                    {infoCard}      
                 </article>
+                
             </div>
         )
     })
     return (
         <div>
             <h3>{props.match.params.subjectName}</h3>
-
             <div className="grid-body">
                 {allSubjectBooks}
-                {infoCard}
             </div>
-               
-
-
-
+            
         </div>
     )
 }
