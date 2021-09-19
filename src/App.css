@@ -16,8 +16,111 @@
 }
 
 /* ----------------------------------- nav ---------------------------------- */
+.suggestion-input{
+  width:10rem;
+}
+.suggestion-container{
+display: block;
+position: absolute;
+width:10rem;
+/* border: 1px solid #aaa; */
+background-color: #fff;
+z-index: 2;
+}
+.suggestion-box{
+  width:10rem;
+  border-bottom: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  border-left:1px solid #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size:0.75rem;
+  cursor: pointer;
+}
 /* ---------------------------------- about --------------------------------- */
 /* ----------------------------- subjectshowcase ---------------------------- */
 .subject-img{
   max-width: 5rem;
+}
+/* ---------------------------- subject showpage ---------------------------- */
+
+.grid-body {
+  margin: 0 auto;
+  width: calc(100% - 4rem);
+  max-width: 72rem;
+  line-height: 0;   
+  -webkit-column-count: 5;
+  -webkit-column-gap:   0px;
+  -moz-column-count:    5;
+  -moz-column-gap:      0px;
+  column-count:         5;
+  column-gap:           0px;
+}
+.card{
+  height:auto;
+}
+
+/* hover styles */
+.content {
+  position: relative;
+  margin:0.1rem;
+}
+
+.content-img {
+  line-height: 0;
+  overflow: hidden;
+  width:100%
+}
+
+.content-img .book-img {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+  transform: scale(1.1);
+  width: 100%; /* need to overwrite inline dimensions */
+  height: auto;
+}
+
+.context-text {
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity .5s;
+  background: rgba(85, 87, 100, 0.4);
+  color: #f4f4f4;
+  pointer-events: none;
+  text-align: center;
+  
+   
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.title{
+    position: relative;
+    overflow-wrap: break-word;
+    
+    
+    /* white-space: nowrap; */
+    
+}
+.copy{
+    position: relative;
+   
+}
+
+.content:hover .context-text {
+  opacity: 1;
+}
+
+.content:hover .content-img .movie-img {
+  filter: blur(2px);
 }

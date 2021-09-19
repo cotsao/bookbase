@@ -12,16 +12,17 @@ function Nav() {
                     console.log(error);
                 });
             setbookSearch(response.data.docs)
+            console.log(bookSearch)
         }
         console.log("searchtext is " + searchText)
-        
+
         let matches = []
         if (searchText.length > 0) {
             loadSearch()
             if (searchText.length > 0) {
                 matches = bookSearch.filter(book => {
-                    const sanitized = book.title.toLowerCase().replace(/[^a-zA-Z0-9]/g,'')
-                    return book.title.toLowerCase().replace(/[^a-zA-Z0-9]/g,'').match(sanitized)
+                    const sanitized = book.title.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')
+                    return book.title.toLowerCase().replace(/[^a-zA-Z0-9]/g, '').match(sanitized)
                 })
                 setSuggestions(matches)
             }
@@ -29,7 +30,7 @@ function Nav() {
 
     }, [searchText]);
     const onChangeHandler = (text) => {
-        setsearchText(text)             
+        setsearchText(text)
     }
     const onSuggestHandler = (text) => {
         setsearchText(text)
@@ -38,9 +39,12 @@ function Nav() {
     return (
         <header className="lg-container">
             <nav>
-                <ul className="flex">
+                <ul className="flex justify-between">
                     <li>bookbase</li>
-                    <input type="text"
+                    <div>
+                    <input 
+                        className="suggestion-input"
+                        type="text"
                         onChange={e => onChangeHandler(e.target.value)}
                         value={searchText}
                         onBlur={() => {
@@ -49,10 +53,17 @@ function Nav() {
                             }, 100)
                         }}
                     />
-                    {suggestions && suggestions.map((suggestion, i) =>
-                        <div key={i}
-                            onClick={() => onSuggestHandler(suggestion.title)}
-                        >{suggestion.title}</div>)}
+                    <div className="suggestion-container">
+                        {suggestions && suggestions.map((suggestion, i) =>
+                            <div
+                                className="suggestion-box" 
+                                key={i}
+                                onClick={() => onSuggestHandler(suggestion.title)}
+                            >{suggestion.title}</div>)}
+                    </div>
+                    </div>
+                   
+
                     <li>signup</li>
                     <li>login</li>
                 </ul>
