@@ -6,7 +6,7 @@ const axios = require('axios');
 function Showcase(props) {
     
     const [showBooks, setShowBooks] = useState([])
-    const searchTerm = props.searchTerm
+    const [searchTerm, setSearchTerm] = useState("fantasy");
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -28,8 +28,8 @@ function Showcase(props) {
     };
     useEffect (()=>{
         const loadBooks = async ()=>{
-            const response = await axios.get(`https://openlibrary.org/subjects/${searchTerm}.json?details=true`)
-            setShowBooks(response.data.works)
+            const response = await axios.get(`https://openlibrary.org/subjects/${searchTerm.toLowerCase().replace(/[^a-zA-Z0-9]/g, '_')}.json?details=true`)
+            if(response.data){setShowBooks(response.data.works)}
         }
         loadBooks()
     },[searchTerm])
@@ -50,8 +50,22 @@ function Showcase(props) {
             </div>
         )
     })
+    function handleSubjClick(subject){
+        setSearchTerm(subject)
+    }
+    const subj = ["Fantasy", "Biography", "Children", "History"]
+    const subjBtn = subj.map((subject,idx)=>{
+        return (
+            <span key ={idx} onClick={()=>handleSubjClick(subject)}>{subject}</span>
+        )
+    })
     return (
         <div className="med-container">
+            <h1>Search by Subject</h1>
+            <h6>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</h6>
+            <div>
+                {subjBtn}
+            </div>
             <h1>{searchTerm} books</h1>
             <Carousel 
                 responsive={responsive}
