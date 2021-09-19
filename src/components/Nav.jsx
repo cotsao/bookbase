@@ -11,7 +11,10 @@ function Nav() {
                 .catch(function (error) {
                     console.log(error);
                 });
-            setbookSearch(response.data.docs)
+                if(typeof response != 'undefined'){
+                    setbookSearch(response.data.docs)
+                }
+            
             console.log(bookSearch)
         }
         console.log("searchtext is " + searchText)

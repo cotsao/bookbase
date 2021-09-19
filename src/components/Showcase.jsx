@@ -29,7 +29,7 @@ function Showcase(props) {
     useEffect (()=>{
         const loadBooks = async ()=>{
             const response = await axios.get(`https://openlibrary.org/subjects/${searchTerm.toLowerCase().replace(/[^a-zA-Z0-9]/g, '_')}.json?details=true`)
-            if(response.data){setShowBooks(response.data.works)}
+            if(typeof response != 'undefined'){setShowBooks(response.data.works)}
         }
         loadBooks()
     },[searchTerm])
