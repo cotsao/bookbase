@@ -50,9 +50,9 @@ function Nav() {
                     </div>
                     <div className="nav-left">
                         
-                        <span className="nav-el">bookbase</span>
-                        <span className="nav-el">link 1</span>
-                        <span className="nav-el">link 2</span>
+                        <Link className="nav-el" to='/'><span className="nav-el">home</span></Link>
+                        <Link className="nav-el" to='/lists'> <span className="nav-el">lists</span> </Link>
+                        <Link className="nav-el" to='/about'> <span className="nav-el">about</span> </Link>
                         <span className="nav-el">link 3</span>
                     </div>
                     <div></div>

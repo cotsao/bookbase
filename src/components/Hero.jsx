@@ -1,4 +1,3 @@
-import Nav from "./Nav"
 function Hero() {
     return (
         <section class="masthead" role="img" aria-label="Image Description">

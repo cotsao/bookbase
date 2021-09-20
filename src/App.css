@@ -10,6 +10,9 @@
 .lg-container{
   width:100%;
 }
+.shove-down{
+  margin-top:20vh;
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                 grid effect                                */
@@ -28,7 +31,8 @@
 .content-img {
   line-height: 0;
   overflow: hidden;
-  width:100%
+  width:100%;
+  border-radius:5px;
 }
 
 .content-img .book-img {
@@ -37,6 +41,7 @@
   transform: scale(1.1);
   width: 100%; /* need to overwrite inline dimensions */
   height: auto;
+  border-radius:5px;
 }
 
 .context-text {
@@ -54,31 +59,16 @@
   background: rgba(85, 87, 100, 0.4);
   color: #f4f4f4;
   pointer-events: none;
-  text-align: center;
-  
-   
+  text-align: center;  
+  border-radius:5px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.title{
-    position: relative;
-    overflow-wrap: break-word;
-    
-    
-    /* white-space: nowrap; */
-    
-}
-.copy{
-    position: relative;
-   
-}
-
 .content:hover .context-text {
   opacity: 1;
 }
-
 .content:hover .content-img .book-img {
   filter: blur(2px);
 }
@@ -87,7 +77,6 @@
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
   color: black;
-
 }
 .card:hover .add-btn{  
   opacity: 1;
@@ -123,6 +112,8 @@ text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
 }
 .nav-el{
   padding-left: 0.5rem;
+  text-decoration: none;
+  color: white;
 }
 .nav-flex{
   display:flex;
@@ -179,7 +170,7 @@ color:#aaa;
   text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
   
 }
-/* ---------------------------------- about --------------------------------- */
+/* ---------------------------------- about showcase --------------------------------- */
 .about-container{
   text-align: center;
   height:80vh;
@@ -194,8 +185,59 @@ color:#aaa;
 .about-img{
   max-height: 40vh;
 }
+/* -------------------------------- aboutpage ------------------------------- */
+.about-masthead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  height: 40vh; /* if you don't want it to take up the full screen, reduce this number */
+  overflow: hidden;
+  background-size: cover !important;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%), url('./images/about-page.jpg') no-repeat center center scroll;
+}
 
-
+.about-hero-text {
+  font-style: normal;
+  font-weight: bold;
+  color: #eee;
+  font-size: 5vmin;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: 7px;
+}
+.aboutpage-container{
+  text-align: left;
+}
+.who-we-are{
+  max-width:60vh;
+  margin:0 auto;
+}
+.team-section{
+  display:flex;
+  justify-content: space-around;
+}
+.team-image{
+  max-width:30vh;
+  max-height:30vh
+  
+  
+}
+.team-title{
+  text-align: center;
+}
+.About-Page{
+  padding-bottom: 10vh;
+}
+.team-container{
+  display:flex;
+  flex-direction:column;
+  align-items:space-between;
+  
+}
 /* ------------------------------- Newsletter ------------------------------- */
 .newsletter-container{
   background-color:rgb(155, 147, 137,0.5);
@@ -209,22 +251,43 @@ color:#aaa;
   max-height:75%;
   border-radius:25px;
 }
-
-/* ----------------------------- subjectshowcase ---------------------------- */
+/* ---------------------------- showcase ---------------------------- */
+.showcase-grid-container{  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+}
 .showcase-container{
-  height:80vh;
+  min-height:80vh;
   text-align: center;
 
 }
-.subject-img{
-  max-width: 5rem;
-}
-.subj-btn{
+.showcase-btn{
   display: flex;
   margin: 0 auto;
   justify-content: space-between;
   width: calc(100% - 50%);
 }
+.showcase-card{
+  margin-right:6.5vh;
+  margin-bottom:6.5vh;
+}
+.showcase-content{
+  max-height:40vh;
+}
+.showcase-img{
+  height:40vh;
+  border-radius:5px;
+  
+}
+/* ----------------------------- subjectshowcase ---------------------------- */
+
+.subject-img{
+  max-width: 5rem;
+}
+
 /* ---------------------------- subject showpage ---------------------------- */
 
 .grid-body {
@@ -265,4 +328,34 @@ color:#aaa;
   box-shadow: 0 0 2px 2px grey;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+/* --------------------------------- Footer --------------------------------- */
+
+.footer-container{
+  width: 100%;
+  height:50vh;
+  background-color:rgb(231, 225, 209,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.footer-logo{
+  max-width:10vh;
+  max-height: 10vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+.footer-text{
+  max-width:80vh;
+  
+}
+.footer-logos{
+  margin: 3vh 0 3vh 0;
+}
+.footer-links{
+margin: 3vh 0 3vh 0;
+}
+.footer-link-el{
+  padding-right:3vh;
 }
