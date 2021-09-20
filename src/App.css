@@ -83,13 +83,13 @@
   filter: blur(2px);
 }
 .add-btn{
-  
-  /* opacity: 0; */
+  margin:0;
+  opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
   color: black;
 
 }
-.content:hover .add-btn{  
+.card:hover .add-btn{  
   opacity: 1;
 }
 

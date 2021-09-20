@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import Carousel from 'react-multi-carousel';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import 'react-multi-carousel/lib/styles.css';
 const axios = require('axios');
-function Showcase(props) {
-    
+function Showcase() {
+
     const [showBooks, setShowBooks] = useState([])
     const [searchTerm, setSearchTerm] = useState("fantasy");
+    const [dropdown, setDropdown] = useState(false);
+    const [index, setIndex] = useState(0);
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -26,39 +28,47 @@ function Showcase(props) {
             items: 1
         }
     };
-    useEffect (()=>{
-        const loadBooks = async ()=>{
-            const response = await axios.get(`https://openlibrary.org/subjects/${searchTerm.toLowerCase().replace(/[^a-zA-Z0-9]/g, '_')}.json?details=true`)
-            if(typeof response != 'undefined'){setShowBooks(response.data.works)}
+    useEffect(() => {
+        const loadBooks = async () => {
+            const response = await axios.get(`https://openlibrary.org/subjects/${searchTerm.replace(/\s+/g, '-').toLowerCase()}.json?details=true`)
+            if (typeof response != 'undefined') {
+                console.log(response.data)
+                setShowBooks(response.data.works)
+            }
         }
         loadBooks()
-    },[searchTerm])
-    const cardElements = showBooks.map((book,idx)=>{
+    }, [searchTerm])
+    const cardElements = showBooks.map((book, idx) => {
+        console.log(`${book}`)
         const imgUrl = `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
         return (
             <div className="card" key={idx}>
-                <article style={{maxHeight:250}} className="content">
+                <article style={{ maxHeight: 250 }} className="content">
                     <Link to={book.key}>
-                        <img style={{maxHeight:250}} className="content-img book-img" src={imgUrl} alt="N/A" />
+                        <img style={{ maxHeight: 250 }} className="content-img book-img" src={imgUrl} alt="N/A" />
                     </Link>
                     <div className="context-text">
                         <h3 className="title">
                             {book.title}
                         </h3>
                     </div>
-                    <h2>Add</h2>
                 </article>
-                
+                <h2 onClick={()=>toggleDropdown(idx)} className="add-btn">Add</h2>
+                {dropdown && (idx===index)&& book.title}
             </div>
         )
     })
-    function handleSubjClick(subject){
+    function toggleDropdown(idx){
+        setDropdown(!dropdown)
+        setIndex(idx)
+    }
+    function handleSubjClick(subject) {
         setSearchTerm(subject)
     }
     const subj = ["Fantasy", "Biography", "Children", "History"]
-    const subjBtn = subj.map((subject,idx)=>{
+    const subjBtn = subj.map((subject, idx) => {
         return (
-            <span key ={idx} onClick={()=>handleSubjClick(subject)}>{subject}</span>
+            <span key={idx} onClick={() => handleSubjClick(subject)}>{subject}</span>
         )
     })
     return (
@@ -70,15 +80,15 @@ function Showcase(props) {
             </div>
             <h1>{searchTerm} books</h1>
             <div>
-            <Carousel 
-                responsive={responsive}
-                infinite={true}
-                arrows={false}
-            >
-                {cardElements}
-            </Carousel>
+                <Carousel
+                    responsive={responsive}
+                    infinite={true}
+                    arrows={false}
+                >
+                    {cardElements}
+                </Carousel>
             </div>
-            
+
         </div>
     )
 }

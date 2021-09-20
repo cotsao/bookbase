@@ -5,6 +5,7 @@ function SubjectShowPage(props) {
     const [subject, setSubject] = useState([]);
     const [infoCard, setInfoCard] = useState("");
     const [delayHandler, setDelayHandler] = useState(null);
+    const [index, setIndex] = useState(0);
 
     useEffect(() => {
         const subjectUrl = `https://openlibrary.org/subjects/${props.match.params.subjectName.toLowerCase().replace(/[^a-zA-Z0-9]/g, '_')}.json?details=true`
@@ -25,17 +26,22 @@ function SubjectShowPage(props) {
         clearTimeout(delayHandler)
         setInfoCard("")
     }
-    function handleHover(book) {
+    function handleHover(book, idx) {
         const bookUrl = `https://openlibrary.org${book.key}.json`
         setDelayHandler(setTimeout(() => {
             const loadBook = async () =>{
                 const response = await axios.get(bookUrl).catch(function (error){console.log(error)})
                 let descript ="" 
-                if (response.data.description.value){
-                    descript = response.data.description.value
+                console.log(response.data)
+                if(typeof response.data.description === "undefined"){
+                    descript = "N/A"
+                }
+                else if (typeof response.data.description === "string"){
+                    descript =response.data.description
+                    
                 }
                 else{
-                    descript =response.data.description
+                    descript = response.data.description.value
                 }
                 const cardInfo = 
                     <div className="info-card">
@@ -45,7 +51,7 @@ function SubjectShowPage(props) {
                     setInfoCard(cardInfo)
             }
             loadBook()
-            return true;
+            setIndex(idx)
         }, 500))
     }
     const allSubjectBooks = subject.map((book, idx) => {
@@ -64,12 +70,12 @@ function SubjectShowPage(props) {
                             className="card-img "
                             src={imgUrl}
                             alt="N/A"
-                            onMouseOver={() => { handleHover(book) }}
+                            onMouseOver={() => { handleHover(book,idx) }}
                             onMouseLeave={handleLeave}
                             value={book}
                         />
                     </Link>
-                    {infoCard}      
+                    {(idx === index) &&infoCard}      
                 </article>
                 
             </div>
