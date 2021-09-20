@@ -46,7 +46,9 @@ function Showcase(props) {
                             {book.title}
                         </h3>
                     </div>
+                    <h2>Add</h2>
                 </article>
+                
             </div>
         )
     })
@@ -60,13 +62,14 @@ function Showcase(props) {
         )
     })
     return (
-        <div className="med-container">
+        <div className="med-container showcase-container">
             <h1>Search by Subject</h1>
             <h6>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</h6>
-            <div>
+            <div className="subj-btn">
                 {subjBtn}
             </div>
             <h1>{searchTerm} books</h1>
+            <div>
             <Carousel 
                 responsive={responsive}
                 infinite={true}
@@ -74,6 +77,8 @@ function Showcase(props) {
             >
                 {cardElements}
             </Carousel>
+            </div>
+            
         </div>
     )
 }

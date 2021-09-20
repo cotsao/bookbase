@@ -13,7 +13,7 @@ function SubjectShowPage(props) {
                 .catch(function (error) {
                     console.log(error)
                 })
-                if(response!=undefined){
+                if(typeof response != 'undefined'){
                     setSubject(response.data.works)
                 }
             

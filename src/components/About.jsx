@@ -34,8 +34,8 @@ function About() {
     const cards = cardData.map((card,idx)=>{
         return(
             <div key={idx}>
-                <article style={{maxWidth:250}}>
-                    <img style={{maxHeight:425}}  src={card.image} alt="N/A" />
+                <article className="about-article">
+                    <img className="about-img"  src={card.image} alt="N/A" />
                     <h6>{card.title}</h6>
                     <p>{card.description}</p>
                     

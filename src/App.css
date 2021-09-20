@@ -79,10 +79,19 @@
   opacity: 1;
 }
 
-.content:hover .content-img .movie-img {
+.content:hover .content-img .book-img {
   filter: blur(2px);
 }
+.add-btn{
+  
+  /* opacity: 0; */
+  transition: visibility 0s, opacity 0.5s linear;
+  color: black;
 
+}
+.content:hover .add-btn{  
+  opacity: 1;
+}
 
 /* ----------------------------------- nav ---------------------------------- */
 .nav-bar{
@@ -179,6 +188,13 @@ color:#aaa;
   margin: 0;
   padding-top: 0.25rem;
 }
+.about-article{
+  max-width: 16rem;
+}
+.about-img{
+  max-height: 40vh;
+}
+
 
 /* ------------------------------- Newsletter ------------------------------- */
 .newsletter-container{
@@ -193,9 +209,21 @@ color:#aaa;
   max-height:75%;
   border-radius:25px;
 }
+
 /* ----------------------------- subjectshowcase ---------------------------- */
+.showcase-container{
+  height:80vh;
+  text-align: center;
+
+}
 .subject-img{
   max-width: 5rem;
+}
+.subj-btn{
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  width: calc(100% - 50%);
 }
 /* ---------------------------- subject showpage ---------------------------- */
 
