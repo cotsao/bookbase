@@ -17,7 +17,7 @@ function OneBook(props) {
     };
     loadBook()
     
-  }, []);
+  }, [props.book]);
   const imgUrl=`http://covers.openlibrary.org/b/id/${coverIds[0]}-S.jpg`
   return (<div>
       <img src={imgUrl} alt="N/A" />

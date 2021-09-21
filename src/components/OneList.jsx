@@ -1,6 +1,6 @@
 import axios from "axios";
 import OneBook from "./OneBook";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 const url = "http://localhost:4000/api/list";
 function OneList(props) {
   const [list, setList] = useState(props.list);

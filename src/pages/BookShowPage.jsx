@@ -5,7 +5,7 @@ import RelatedSubjectList from "../components/RelatedSubjectList";
 
 const axios = require("axios");
 function BookShowPage(props) {
-  const [book, setBook] = useState({covers:[]});
+  const [book, setBook] = useState({});
   const [coverIndex, setCoverIndex] = useState(0);
   const [imgUrl, setImgUrl] = useState("");
 
@@ -15,11 +15,11 @@ function BookShowPage(props) {
       const response = await axios.get(bookUrl).catch(function (error) {
         console.log(error);
       });
+      console.log(response.data)
       setBook(response.data);
       if(typeof response.data.covers !== 'undefined'){
-        setImgUrl(`http://covers.openlibrary.org/b/id/${response.data.covers[coverIndex]}-M.jpg`)
-      }
-      
+        setImgUrl(`http://covers.openlibrary.org/b/id/${response.data.covers[0]}-M.jpg`)
+      }   
       
       
     };
