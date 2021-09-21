@@ -9,8 +9,7 @@ function SubjectShowPage(props) {
 
   useEffect(() => {
     const subjectUrl = `https://openlibrary.org/subjects/${props.match.params.subjectName
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9]/g, "_")}.json?details=true`;
+      .toLowerCase()}.json?details=true`;
     const loadSubject = async () => {
       const response = await axios.get(subjectUrl).catch(function (error) {
         console.log(error);

@@ -21,7 +21,6 @@ function OneList(props) {
     deleteBook();
   }
   function updateList(updatedList) {
-    console.log("create list hit")
     const updateUrl = `${url}/${list._id}`
     axios.put(updateUrl, updatedList).then(function (res) {
       console.log(res);

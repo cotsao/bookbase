@@ -40,14 +40,12 @@ function ReadListIndex() {
   }
   function deleteListHandler(listId) {
     const deleteList = async () => {
-      const response = await axios
-        .delete(`${url}/${listId}`)
-        .catch(function (error) {
-          console.log(error);
-        });
-        getIndex(url)
+      await axios.delete(`${url}/${listId}`).catch(function (error) {
+        console.log(error);
+      });
+      getIndex(url);
     };
-    deleteList()
+    deleteList();
   }
 
   const addListForm = (

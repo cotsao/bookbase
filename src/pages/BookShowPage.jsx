@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "react-multi-carousel/lib/styles.css";
+import AuthorsList from "../components/AuthorsList";
+import RelatedSubjectList from "../components/RelatedSubjectList";
 
 const axios = require("axios");
 function BookShowPage(props) {
@@ -32,13 +34,15 @@ function BookShowPage(props) {
   }
   
   return (
-    <div className="shove-down">
+    <div className="shove-down med-container">
       <div>
         <img onClick={() => imgClickHandler()} src={imgUrl} alt="NOPE" />
       </div>
       <div>
         <h3>{book.title && book.title}</h3>
+        {book.authors && <AuthorsList authors={book.authors}/>}
         <p>{book.description?.value}</p>
+        {book.subjects && <RelatedSubjectList subjects={book.subjects}/>}
       </div>
     </div>
   );
