@@ -4,8 +4,7 @@ const url = "http://localhost:4000/api/list";
 
 function AddToReadList(props) {
   const [listId, setListId] = useState("");
-
-  const renderOptions = props.lists.map((list, idx) => {
+    const renderOptions = props.lists.map((list, idx) => {
     return (
       <option key={idx} value={list._id}>
         {list.title}

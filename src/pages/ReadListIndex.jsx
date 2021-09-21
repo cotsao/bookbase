@@ -7,17 +7,18 @@ function ReadListIndex() {
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [newPicture, setNewPicture] = useState("");
+  const [toggleAdd, setToggleAdd] = useState(false);
 
   useEffect(() => {
     getIndex(url);
   }, []);
   function getIndex(endPoint) {
     const loadIndex = async () => {
-      const reponse = await axios.get(endPoint).catch(function (error) {
+      const response = await axios.get(endPoint).catch(function (error) {
         console.log(error);
       });
-      console.log(reponse.data);
-      setLists(reponse.data);
+      console.log(response.data);
+      setLists(response.data);
     };
     loadIndex();
   }
@@ -35,17 +36,28 @@ function ReadListIndex() {
       picture: newPicture,
     };
     createList(list);
+    setToggleAdd(!toggleAdd)
   }
-  function titleInputHandler(title) {
-    setNewTitle(title);
-  }
-  function descriptionHandler(descript) {
-    setNewDescription(descript);
-  }
-  function pictureHandler(picture) {
-    setNewPicture(picture);
-  }
-
+  const addListForm = (
+    <div>
+      <span>New List</span>
+      <form onSubmit={(e) => createFormSubmit(e)}>
+        <input
+          onChange={(e) => setNewTitle(e.target.value)}
+          placeholder="title"
+        ></input>
+        <textarea
+          onChange={(e) => setNewDescription(e.target.value)}
+          placeholder="description"
+        ></textarea>
+        <input
+          onChange={(e) => setNewPicture(e.target.value)}
+          placeholder="picture"
+        ></input>
+        <button type="submit">Create List</button>
+      </form>
+    </div>
+  );
   const renderLists = lists.map((list, idx) => {
     return <OneList list={list} key={idx} />;
   });
@@ -53,24 +65,8 @@ function ReadListIndex() {
     <div className="med-container shove-down">
       ReadListIndex
       {renderLists}
-      <div>
-        <span>New List</span>
-        <form onSubmit={(e) => createFormSubmit(e)}>
-          <input
-            onChange={(e) => titleInputHandler(e.target.value)}
-            placeholder="title"
-          ></input>
-          <textarea
-            onChange={(e) => descriptionHandler(e.target.value)}
-            placeholder="description"
-          ></textarea>
-          <input
-            onChange={(e) => pictureHandler(e.target.value)}
-            placeholder="picture"
-          ></input>
-          <button type="submit">Create List</button>
-        </form>
-      </div>
+      <button onClick={(e)=> setToggleAdd(!toggleAdd)}>Create a new List</button>
+      {toggleAdd && addListForm}
     </div>
   );
 }
