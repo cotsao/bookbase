@@ -21,7 +21,7 @@ function AuthorsList(props) {
   }, []);
 
   const renderAuthors = authors.map((author, idx) => {
-    return <p key="idx">{author}</p>;
+    return <p key={idx}>{author}</p>;
   });
   return <div>{renderAuthors}</div>;
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 function OneBook(props) {
   const [bookDetails, setBookDetails] = useState({});
@@ -21,7 +22,7 @@ function OneBook(props) {
   return (<div>
       <img src={imgUrl} alt="N/A" />
       <br/>
-      {bookDetails.title}
+      <Link to={props.book}> {bookDetails.title}</Link>
       </div>)
 }
 export default OneBook;

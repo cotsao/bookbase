@@ -38,7 +38,7 @@ function RelatedSubjectList(props) {
       ) : (
         <span onClick={() => setToggleShowAll(!toggleShowAll)}>Show All</span>
       )}
-      <br/>
+      <br />
       {toggleShowAll && renderRelatedSubjectsRest}
     </div>
   );

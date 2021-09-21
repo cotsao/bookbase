@@ -16,7 +16,10 @@ function BookShowPage(props) {
         console.log(error);
       });
       setBook(response.data);
-      setImgUrl(`http://covers.openlibrary.org/b/id/${response.data.covers[coverIndex]}-M.jpg`)
+      if(typeof response.data.covers !== 'undefined'){
+        setImgUrl(`http://covers.openlibrary.org/b/id/${response.data.covers[coverIndex]}-M.jpg`)
+      }
+      
       
       
     };
@@ -26,17 +29,21 @@ function BookShowPage(props) {
     
     if (coverIndex + 1 >= book.covers.length) {
       setCoverIndex(0);
-      setImgUrl(`http://covers.openlibrary.org/b/id/${book.covers[coverIndex]}-M.jpg`)
+      if(typeof book.covers !== 'undefined'){
+        setImgUrl(`http://covers.openlibrary.org/b/id/${book.covers[coverIndex]}-M.jpg`)
+      }
     } else {
       setCoverIndex(coverIndex + 1);
-      setImgUrl(`http://covers.openlibrary.org/b/id/${book.covers[coverIndex]}-M.jpg`)
+      if(typeof book.covers !== 'undefined'){
+        setImgUrl(`http://covers.openlibrary.org/b/id/${book.covers[coverIndex]}-M.jpg`)
+      }
     }
   }
   
   return (
     <div className="shove-down med-container">
       <div>
-        <img onClick={() => imgClickHandler()} src={imgUrl} alt="NOPE" />
+        <img onClick={() => imgClickHandler()} src={imgUrl} alt="N/A" />
       </div>
       <div>
         <h3>{book.title && book.title}</h3>
