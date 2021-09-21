@@ -1,28 +1,11 @@
 import { useState, useEffect } from "react";
 import "react-multi-carousel/lib/styles.css";
-import Carousel from "react-multi-carousel";
+
 const axios = require("axios");
 function BookShowPage(props) {
-  const [book, setBook] = useState({});
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
+  const [book, setBook] = useState({covers:[]});
+  const [coverIndex, setCoverIndex] = useState(0);
+  const [imgUrl, setImgUrl] = useState("");
 
   useEffect(() => {
     const bookUrl = `https://openlibrary.org/works/${props.match.params.bookID}.json`;
@@ -31,27 +14,27 @@ function BookShowPage(props) {
         console.log(error);
       });
       setBook(response.data);
+      setImgUrl(`http://covers.openlibrary.org/b/id/${response.data.covers[coverIndex]}-M.jpg`)
+      
+      
     };
     loadBook();
   }, [props.match.params.bookID]);
-  let images = [];
-  if (book.covers) {
-    images = book.covers.map((cover, idx) => {
-      const imgUrl = `http://covers.openlibrary.org/b/id/${cover}-S.jpg`;
-      return <img key={idx} src={imgUrl} alt="N/A" />;
-    });
+  function imgClickHandler() {
+    
+    if (coverIndex + 1 >= book.covers.length) {
+      setCoverIndex(0);
+      setImgUrl(`http://covers.openlibrary.org/b/id/${book.covers[coverIndex]}-M.jpg`)
+    } else {
+      setCoverIndex(coverIndex + 1);
+      setImgUrl(`http://covers.openlibrary.org/b/id/${book.covers[coverIndex]}-M.jpg`)
+    }
   }
-
+  
   return (
-    <div>
+    <div className="shove-down">
       <div>
-        <Carousel
-          className="sml-container"
-          responsive={responsive}
-          infinite={true}
-        >
-          {images}
-        </Carousel>
+        <img onClick={() => imgClickHandler()} src={imgUrl} alt="NOPE" />
       </div>
       <div>
         <h3>{book.title && book.title}</h3>
