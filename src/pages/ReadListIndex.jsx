@@ -36,8 +36,20 @@ function ReadListIndex() {
       picture: newPicture,
     };
     createList(list);
-    setToggleAdd(!toggleAdd)
+    setToggleAdd(!toggleAdd);
   }
+  function deleteListHandler(listId) {
+    const deleteList = async () => {
+      const response = await axios
+        .delete(`${url}/${listId}`)
+        .catch(function (error) {
+          console.log(error);
+        });
+        getIndex(url)
+    };
+    deleteList()
+  }
+
   const addListForm = (
     <div>
       <span>New List</span>
@@ -59,13 +71,20 @@ function ReadListIndex() {
     </div>
   );
   const renderLists = lists.map((list, idx) => {
-    return <OneList list={list} key={idx} />;
+    return (
+      <div>
+        <button onClick={() => deleteListHandler(list._id)}>Delete List</button>
+        <OneList list={list} key={idx} />
+      </div>
+    );
   });
   return (
     <div className="med-container shove-down">
       ReadListIndex
       {renderLists}
-      <button onClick={(e)=> setToggleAdd(!toggleAdd)}>Create a new List</button>
+      <button onClick={(e) => setToggleAdd(!toggleAdd)}>
+        Create a new List
+      </button>
       {toggleAdd && addListForm}
     </div>
   );
