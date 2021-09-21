@@ -1,6 +1,4 @@
-function AuthorShowPage(){
-    return(
-        <div>AuthorShowPage</div>
-    )
+function AuthorShowPage() {
+  return <div>AuthorShowPage</div>;
 }
-export default AuthorShowPage
+export default AuthorShowPage;
