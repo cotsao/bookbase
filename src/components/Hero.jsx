@@ -7,4 +7,4 @@ function Hero() {
         </section>
     )
 }
-export default Hero
+export default Hero;
