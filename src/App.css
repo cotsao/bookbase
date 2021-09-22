@@ -1,3 +1,7 @@
+/* -------------------------------------------------------------------------- */
+/*                                   imports                                  */
+/* -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant&family=Hind+Guntur:wght@300;400;500;600;700&family=Hind:wght@300;400;500;600;700&family=Maitree:wght@200;300;400;500;600&family=Merriweather&family=Raleway:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&display=swap');
 /* --------------------------------- global --------------------------------- */
 .med-container{
   margin:0 auto;
@@ -5,15 +9,32 @@
   max-width: 72rem;
 }
 .sml-container{
-  max-width:25%
+  max-width:25%;
+  margin:0;
 }
 .lg-container{
   width:100%;
+  margin:0;
 }
 .shove-down{
   margin-top:20vh;
 }
+.big-font{
+  font-family: 'Raleway', sans-serif;
+}
+.med-font{
+  font-family: 'Maitree', serif;
 
+  /* font-family: 'Merriweather', serif; */
+}
+.sml-font{
+  /* font-family: 'Hind', sans-serif; */
+
+  font-family: 'Hind Guntur', sans-serif;
+}
+.color-2{
+  color:#a5967d;
+}
 /* -------------------------------------------------------------------------- */
 /*                                 grid effect                                */
 /* -------------------------------------------------------------------------- */
@@ -85,42 +106,65 @@
 /* ----------------------------------- nav ---------------------------------- */
 .nav-bar{
 left: 0;
-position: absolute;
+position: fixed;
 right: 0;
 top: 0;
 z-index: 9;
-color:white;
-text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
-background-color: white;
-height: 10vh;
-
+color:rgb(45, 55, 60);
+/* text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); */
+background-color: #F1F0EB;
+min-height: 10vh;
+font-size: 18px;
+text-decoration: none;
+text-transform: uppercase;
+margin:0;
+}
+.nav-bar a{
+  color:rgb(45, 55, 60)
+}
+#nav-search-logo{
+  max-height: 36px;
+}
+.nav-search{
+  display:flex;  
 }
 .nav-container{
   margin:0 auto;
   padding-left: 3rem;
   padding-right: 3rem;
-  padding-top: 1rem;
+}
+.nav-logo{
+  height:5.5rem;
+  opacity: 0.8;
+  
+  transition: opacity 0.5s;
+}
+.nav-logo:hover{
+  opacity: 1;
 }
 .nav-right{
   display:flex;
-  width:20%;
-  justify-content:space-around;
-  align-content: center;
+  justify-content: space-around;
+  min-width: 50vh;
 }
-.nav-left{
-  display:flex;
-  justify-content:space-around;
-  align-content: center;
-  width:20%;
-}
+
 .nav-el{
-  padding-left: 0.5rem;
+  margin:0;
+  padding:0;
   text-decoration: none;
-  color: white;
+  transition: color 0.5s ease;
 }
+.nav-el:hover{
+  color:#a5967d;  
+}
+
 .nav-flex{
   display:flex;
-  justify-content: space-between; 
+  width:100%;
+  justify-content: space-between;
+  align-content: space-around;
+  align-items:center;
+  margin:0;
 
 }
 .suggestion-input{
@@ -134,7 +178,7 @@ width:10rem;
 /* border: 1px solid #aaa; */
 background-color: #fff;
 z-index: 2;
-color:#aaa;
+
 }
 .suggestion-box{
   width:10rem;
@@ -160,24 +204,49 @@ color:#aaa;
   overflow: hidden;
   background-size: cover !important;
   background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 88%, rgba(0,0,0,0.65) 100%), url('./images/test.jpg') no-repeat center center scroll;
-  margin-bottom: 10vh;
-  margin-top: 10vh;
+  
 }
 
 .hero-text {
   font-style: normal;
   font-weight: bold;
   color: #eee;
-  font-size: 11vmin;
+  font-size: 72px;
   letter-spacing: 0.03em;
   line-height: 1;
   text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
-  
+  margin:0;
+  letter-spacing: 0.075em;
+  pointer-events: none;
 }
 /* ---------------------------------- about showcase --------------------------------- */
 .about-container{
   text-align: center;
-  height:80vh;
+  min-height:85vh;
+  background-color: #F1F0EB;
+  padding-top:1vh;
+  display:flex;
+  align-items: center;
+}
+.about-showcase-title{
+  text-align: left;
+  font-size: 24px;
+  color:rgb(45, 55, 60);
+  font-family: 'Cormorant Infant', serif;
+  letter-spacing: -0.05em;
+  padding: 1rem;
+}
+.about-card-title{
+  color:rgb(64, 82, 92);
+  text-align: left;
+  
+  font-size:18px;
+}
+.about-card-text{
+  color:rgb(45, 55, 60, 0.8);
+  text-align: left;
+  
+  font-size:16px
 }
 .about-container h6,p{
   margin: 0;
@@ -185,8 +254,12 @@ color:#aaa;
 }
 .about-article{
   max-width: 16rem;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 .about-img{
+  object-fit: fill;
   max-height: 40vh;
 }
 /* -------------------------------- aboutpage ------------------------------- */
@@ -244,16 +317,33 @@ color:#aaa;
 }
 /* ------------------------------- Newsletter ------------------------------- */
 .newsletter-container{
-  background-color:rgb(155, 147, 137,0.5);
-  display: flex;
-  flex-direction: row;
+  background-color: #3C4858;
   height:60vh;
+  display:flex; 
+}
+.newsletter-text{
+  color: rgb(45, 55, 60);
+}
+.newsletter-title{  
+  color: rgb(166, 153, 125);
+}
+.newsletter-card{
+  
+  width:auto;
+  margin:0 auto;
+  display: inline-flex;
+  height:auto;
+  flex-direction: column;
+  background-color: #F1F0EB;
   align-items: center;
-  justify-content:space-around;
+  border-radius: 30px;
+  border: solid 1px red;
+  color: rgb(45, 55, 60);
 }
 .newsletter-img{
-  max-height:75%;
+  max-height:45vh;
   border-radius:25px;
+  
 }
 /* ---------------------------- showcase ---------------------------- */
 .showcase-grid-container{  

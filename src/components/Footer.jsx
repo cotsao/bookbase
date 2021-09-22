@@ -1,4 +1,4 @@
-import logo from "../images/Untitled.png";
+import logo from "../images/logo.png";
 function Footer() {
   return (
     <div className="footer-container">

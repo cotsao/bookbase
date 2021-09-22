@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import logo from "../images/Untitled.png";
+import logo from "../images/logo.png";
 const axios = require("axios");
 function Nav() {
   const [bookSearch, setbookSearch] = useState([]);
@@ -19,30 +19,15 @@ function Nav() {
       }
     };
     let matches = [];
-    if (searchText.length >0){
-      loadSearch()
-      bookSearch.slice(0,5).map((oneBook)=>{
-        console.log(oneBook.title)
-        matches.push(oneBook)
-      })
-      console.log(matches)
-      setSuggestions(matches)
-    }
-    /* if (searchText.length > 0) {
+    if (searchText.length > 0) {
       loadSearch();
-      if (searchText.length > 0) {
-        matches = bookSearch.filter((book) => {
-          const sanitized = book.title
-            .toLowerCase()
-            .replace(/[^a-zA-Z0-9]/g, "");
-          return book.title
-            .toLowerCase()
-            .replace(/[^a-zA-Z0-9]/g, "")
-            .match(sanitized);
-        });
-        setSuggestions(matches);
-      }
-    } */
+      bookSearch.slice(0, 5).map((oneBook) => {
+        console.log(oneBook.title);
+        matches.push(oneBook);
+      });
+      console.log(matches);
+      setSuggestions(matches);
+    }
   }, [searchText]);
   const onChangeHandler = (text) => {
     setsearchText(text);
@@ -58,42 +43,46 @@ function Nav() {
   }
 
   return (
-    <header className="nav-bar lg-container">
+    <header className="nav-bar lg-container med-font">
       <nav className="nav-container">
         <ul className="nav-flex">
           <div>
             <Link to="/">
-              <img
-                style={{ maxWidth: 64, maxHeight: 64 }}
-                src={logo}
-                alt="N/A"
-              />
+              <img className="nav-logo" src={logo} alt="N/A" />
             </Link>
           </div>
-          <div className="nav-left">
-            <Link className="nav-el" to="/">
-              <span className="nav-el">home</span>
-            </Link>
-            <Link className="nav-el" to="/lists">
-              {" "}
-              <span className="nav-el">lists</span>{" "}
-            </Link>
-            <Link className="nav-el" to="/about">
-              {" "}
-              <span className="nav-el">about</span>{" "}
-            </Link>
-            <span className="nav-el">link 3</span>
-          </div>
-          <div></div>
-          <div></div>
+          <Link className="nav-el" to="/">
+            <span className="nav-el">home</span>
+          </Link>
+          <Link className="nav-el" to="/lists">
+            {" "}
+            <span className="nav-el">lists</span>{" "}
+          </Link>
+          <Link className="nav-el" to="/about">
+            {" "}
+            <span className="nav-el">about</span>{" "}
+          </Link>
+          <span className="nav-el">link 3</span>
 
           <div className="nav-right">
-            <img
-              style={{ maxWidth: 20, maxHeight: 20 }}
-              src="https://w7.pngwing.com/pngs/456/948/png-transparent-computer-icons-desktop-web-search-engine-wordpress-com-search-icon-search-logo-website-circle-wordpresscom.png"
-              alt=""
-            />
-            <div>
+            <div className="nav-search">
+              <svg
+                id="nav-search-logo"
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-search"
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="#2c3e50"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <circle cx="10" cy="10" r="7" />
+                <line x1="21" y1="21" x2="15" y2="15" />
+              </svg>
               <form onSubmit={(e) => searchSubmitHandler(e)}>
                 <input
                   className="suggestion-input"

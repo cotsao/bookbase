@@ -72,19 +72,27 @@ function About() {
       <div key={idx}>
         <article className="about-article">
           <img className="about-img" src={card.image} alt="N/A" />
-          <h6>{card.title}</h6>
-          <p>{card.description}</p>
+          <h6 className="about-card-title">{card.title}</h6>
+          <p className="about-card-text">{card.description}</p>
         </article>
       </div>
     );
   });
   return (
-    <div className="med-container about-container">
-      <h3>welcome to bookbase</h3>
-      <div>
-        <Carousel responsive={responsive} infinite={true}>
-          {cards}
-        </Carousel>
+    <div className="about-container sml-font">
+      <div className="med-container">
+        <div className="about-showcase-title">
+          <span>
+            The only thing that matches the joy of reading is sharing that joy
+            with others.
+          </span>
+        </div>
+
+        <div>
+          <Carousel responsive={responsive} infinite={true}>
+            {cards}
+          </Carousel>
+        </div>
       </div>
     </div>
   );
