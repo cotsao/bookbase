@@ -1,7 +1,7 @@
 /* -------------------------------------------------------------------------- */
 /*                                   imports                                  */
 /* -------------------------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant&family=Hind+Guntur:wght@300;400;500;600;700&family=Hind:wght@300;400;500;600;700&family=Maitree:wght@200;300;400;500;600&family=Merriweather&family=Raleway:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant&family=Hind+Guntur:wght@300;400;500;600;700&family=Hind:wght@300;400;500;600;700&family=Maitree:wght@200;300;400;500;600&family=Merriweather&family=Raleway:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&family=Roboto+Slab:wght@100;300;400;500;700;800;900&display=swap');
 /* --------------------------------- global --------------------------------- */
 .med-container{
   margin:0 auto;
@@ -23,8 +23,8 @@
   font-family: 'Raleway', sans-serif;
 }
 .med-font{
-  font-family: 'Maitree', serif;
-
+  /* font-family: 'Maitree', serif; */
+  font-family: 'Cormorant Infant', serif;
   /* font-family: 'Merriweather', serif; */
 }
 .sml-font{
@@ -239,7 +239,8 @@ z-index: 2;
 .about-card-title{
   color:rgb(64, 82, 92);
   text-align: left;
-  
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
   font-size:18px;
 }
 .about-card-text{
@@ -261,6 +262,7 @@ z-index: 2;
 .about-img{
   object-fit: fill;
   max-height: 40vh;
+  border-radius: 5px;
 }
 /* -------------------------------- aboutpage ------------------------------- */
 .about-masthead {
@@ -316,33 +318,65 @@ z-index: 2;
   
 }
 /* ------------------------------- Newsletter ------------------------------- */
+.newsletter-wrapper{
+  background-color: #40525C;
+  
+  height:40vh;
+  
+}
 .newsletter-container{
-  background-color: #3C4858;
-  height:60vh;
+  margin:0 auto;
   display:flex; 
+  align-items: center;
+  justify-content: space-around;
+  max-width: 72rem;
+  
 }
 .newsletter-text{
   color: rgb(45, 55, 60);
+  margin:0;
+  font-size: 14px;
+  font-weight: 300;
+  padding-bottom:0.3rem;
+
 }
 .newsletter-title{  
-  color: rgb(166, 153, 125);
+  color: rgb(64, 82, 92);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  margin:0.5rem 0;
+  font-size: 1.3em;
+  line-height: 1.55em;
 }
-.newsletter-card{
+.newsletter-content-container{
+  padding: 15px 30px;
+  line-height: 1.5;  
+  text-decoration: none;
+}
+.newsletter-input{
+  display:flex;  
+  margin-bottom: 0.5rem;
+}
+.newsletter-input svg{
+  padding-left:0.5rem;
   
-  width:auto;
-  margin:0 auto;
-  display: inline-flex;
-  height:auto;
-  flex-direction: column;
-  background-color: #F1F0EB;
-  align-items: center;
-  border-radius: 30px;
-  border: solid 1px red;
-  color: rgb(45, 55, 60);
 }
+
+.newsletter-text-container{
+  overflow-wrap: break-word;
+  background-color: #F1F0EB;
+  border-radius: 5px;
+  padding:2vh;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
 .newsletter-img{
-  max-height:45vh;
+  max-height:35vh;
   border-radius:25px;
+  margin-top: -5vh;
+  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
   
 }
 /* ---------------------------- showcase ---------------------------- */
