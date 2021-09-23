@@ -10,6 +10,7 @@ function Showcase() {
   const [dropdown, setDropdown] = useState(false);
   const [index, setIndex] = useState(0);
   const [lists, setLists] = useState([]);
+  const [buttonIndex, setButtonIndex] = useState(0);
 
   useEffect(() => {
     const loadBooks = async () => {
@@ -39,7 +40,6 @@ function Showcase() {
     loadIndex();
   }
   const cardElements = showBooks.slice(0, 8).map((book, idx) => {
-    console.log(`${book}`);
     const imgUrl = `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
     return (
       <div className="card showcase-card" key={idx}>
@@ -55,7 +55,7 @@ function Showcase() {
             <h3 className="title">{book.title}</h3>
           </div>
         </article>
-        <h2 onClick={() => toggleDropdown(idx)} className="add-btn">
+        <h2 onClick={() => toggleDropdown(idx)} className="add-btn sml-font">
           Add
         </h2>
         {dropdown && idx === index && (
@@ -73,26 +73,31 @@ function Showcase() {
     setDropdown(!dropdown);
     setIndex(idx);
   }
-  function handleSubjClick(subject) {
+  function handleSubjClick(subject,idx) {
     setSearchTerm(subject);
+    setButtonIndex(idx)
   }
   const subj = ["Fantasy", "Science Fiction", "Romance", "History"];
   const subjBtn = subj.map((subject, idx) => {
     return (
-      <span key={idx} onClick={() => handleSubjClick(subject)}>
+      <span 
+      key={idx} 
+      onClick={() => handleSubjClick(subject,idx)}
+      className={buttonIndex===idx ? 'color-2':null}
+      >
         {subject}
       </span>
     );
   });
   return (
-    <div className="med-container showcase-container">
-      <h1>Search by Subject</h1>
-      <h6>
+    <div className="showcase-container">
+      <h1 className="showcase-title big-font">Search <span className="color-2">books</span></h1>
+      <h6 className="showcase-description med-font">
         Lorem ipsum is placeholder text commonly used in the graphic, print, and
         publishing industries for previewing layouts and visual mockups.
       </h6>
-      <div className="showcase-btn">{subjBtn}</div>
-      <h1>{searchTerm} books</h1>
+      <div className="showcase-btn sml-font ">{subjBtn}</div>
+      
       <div className="showcase-grid-container">{cardElements}</div>
     </div>
   );

@@ -88,7 +88,7 @@ function About() {
           </span>
         </div>
 
-        <div>
+        <div className="about-carousel">
           <Carousel responsive={responsive} infinite={true}>
             {cards}
           </Carousel>
