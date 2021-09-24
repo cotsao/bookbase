@@ -33,10 +33,10 @@ function ReadListIndex() {
   }
   async function createList(newList) {
     const data = JSON.stringify({ auth0ID: user.sub, newList: newList });
-    
+
     const token = await getAccessTokenSilently();
     try {
-      axios.post(url, data, {
+      await axios.post(url, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -49,7 +49,7 @@ function ReadListIndex() {
   }
   function deleteListHandler(listId) {
     const deleteList = async () => {
-      const data = JSON.stringify({auth0ID:user.sub})
+      const data = JSON.stringify({ auth0ID: user.sub });
       const token = await getAccessTokenSilently();
       try {
         await axios.delete(`${url}/${listId}`, {
@@ -57,7 +57,7 @@ function ReadListIndex() {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          data:data
+          data: data,
         });
         getIndex(url);
       } catch (error) {

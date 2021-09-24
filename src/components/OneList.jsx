@@ -11,45 +11,61 @@ function OneList(props) {
   const [newDescription, setNewDescription] = useState(list.description);
   const [newPicture, setNewPicture] = useState(list.picture);
   const [toggleAdd, setToggleAdd] = useState(false);
-  
-  
+
   function deleteBookHandler(bookId) {
     const deleteBook = async () => {
-      const data = JSON.stringify({auth0ID:user.sub})
+      const data = JSON.stringify({ auth0ID: user.sub });
       const token = await getAccessTokenSilently();
       try {
-        let response = await axios.delete(`${url}/${props.list._id}${bookId}`,{
+        let response = await axios.delete(`${url}/${props.list._id}${bookId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          data:data
-        })
+          data: data,
+        });
         if (typeof response !== "undefined") {
           setList(response.data);
         }
-      } catch (error){
-        console.log(error)
-      } 
+      } catch (error) {
+        console.log(error);
+      }
     };
     deleteBook();
   }
-  function updateList(updatedList) {
-    const updateUrl = `${url}/${list._id}`
-    axios.put(updateUrl, updatedList).then(function (res) {
-      console.log(res);
-      setList(res.data);
+
+  async function updateList(updatedList) {
+    const data = JSON.stringify({
+      auth0ID: user.sub,
+      updatedList: updatedList,
     });
+    const token = await getAccessTokenSilently();
+    const updateUrl = `${url}/${list._id}`;
+    try {
+      const response = await axios.put(updateUrl, data,
+        {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        
+      });
+      setList(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   function createFormSubmit(event) {
     event.preventDefault();
     let updatedList = {
       title: newTitle,
       description: newDescription,
       picture: newPicture,
+      createdBy: user.nickname,
     };
     updateList(updatedList);
-    setToggleAdd(!toggleAdd)
+    setToggleAdd(!toggleAdd);
   }
   const bookList = list.books.map((book, idx) => {
     return (
@@ -84,9 +100,9 @@ function OneList(props) {
       <h6>{list.title}</h6>
       <p>{list.description}</p>
       <img src={list.picture} alt="N/A" />
-      <button onClick={(e)=> setToggleAdd(!toggleAdd)}>Update the List</button>
+      <button onClick={(e) => setToggleAdd(!toggleAdd)}>Update the List</button>
       {toggleAdd && updateListForm}
-      
+
       {bookList}
     </div>
   );
