@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import "react-multi-carousel/lib/styles.css";
 import AddToReadList from "./AddToReadList";
+import loadingAnim from '../images/loading.svg'
 const axios = require("axios");
 const url = `${process.env.REACT_APP_SERVER_URL}/list`;
 function Showcase() {
-  const { user, getAccessTokenSilently } = useAuth0();
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [showBooks, setShowBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("fantasy");
   const [dropdown, setDropdown] = useState(false);
   const [index, setIndex] = useState(0);
   const [lists, setLists] = useState([]);
   const [buttonIndex, setButtonIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadBooks = async () => {
@@ -21,15 +23,20 @@ function Showcase() {
           .replace(/\s+/g, "-")
           .toLowerCase()}.json?details=true`
       );
-      if (typeof response != "undefined") {
+      if (typeof response !== "undefined") {
         console.log(response.data);
         setShowBooks(response.data.works);
+        setLoading(false)
       }
     };
     loadBooks();
   }, [searchTerm]);
+
   useEffect(() => {
-    getIndex(url);
+    if (isAuthenticated){
+      getIndex(url);
+    }
+    
   }, []);
 
   function getIndex(endPoint) {
@@ -41,6 +48,7 @@ function Showcase() {
         });
         if (typeof response !== "undefined") {
           setLists(response.data);
+          
         }
       } catch (error) {
         console.log(error);
@@ -50,6 +58,21 @@ function Showcase() {
   }
   const cardElements = showBooks.slice(0, 8).map((book, idx) => {
     const imgUrl = `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+    const addSection = (
+      <div>
+        <h2 onClick={() => toggleDropdown(idx)} className="add-btn sml-font">
+          Add
+        </h2>
+        {dropdown && idx === index && (
+          <AddToReadList
+            lists={lists}
+            bookKey={book.key}
+            toggleDropDown={toggleDropdown}
+            index={idx}
+          />
+        )}
+      </div>
+    )
     return (
       <div className="card showcase-card" key={idx}>
         <article className="content showcase-content">
@@ -64,17 +87,7 @@ function Showcase() {
             <h3 className="title">{book.title}</h3>
           </div>
         </article>
-        <h2 onClick={() => toggleDropdown(idx)} className="add-btn sml-font">
-          Add
-        </h2>
-        {dropdown && idx === index && (
-          <AddToReadList
-            lists={lists}
-            bookKey={book.key}
-            toggleDropDown={toggleDropdown}
-            index={idx}
-          />
-        )}
+        {isAuthenticated? addSection : null}
       </div>
     );
   });
@@ -109,7 +122,7 @@ function Showcase() {
       </h6>
       <div className="showcase-btn sml-font ">{subjBtn}</div>
 
-      <div className="showcase-grid-container">{cardElements}</div>
+      {loading ? <img src={loadingAnim} alt="" />:<div className="showcase-grid-container">{cardElements}</div>}
     </div>
   );
 }

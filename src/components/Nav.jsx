@@ -8,9 +8,9 @@ function Nav() {
   const [bookSearch, setbookSearch] = useState([]);
   const [searchText, setsearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const { loginWithRedirect, logout,isAuthenticated  } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
   const history = useHistory();
-  
+
   useEffect(() => {
     const searchUrl = `http://openlibrary.org/search.json?title=${searchText}&limit=10`;
     const loadSearch = async () => {
@@ -45,21 +45,22 @@ function Nav() {
     setSuggestions([]);
   }
   let navItems;
-  if(isAuthenticated) {
-      navItems = (
-          <>
-              <Link to="/profile">Profile</Link>
-              <span onClick={() => logout({ returnTo: window.location.origin })}>Log out</span>
-          </>
-      )
+  if (isAuthenticated) {
+    navItems = (
+      <>
+        <Link className="nav-el" to="/profile">Profile</Link>
+        <span className="nav-el" onClick={() => logout({ returnTo: window.location.origin })}>
+          Log out
+        </span>
+      </>
+    );
   } else {
-      navItems = (
-        <>
-          <span onClick={() => loginWithRedirect()}>Log in</span>
-          <span onClick={() => loginWithRedirect()}>Sign up</span>
-
-        </>
-      )
+    navItems = (
+      <>
+        <span className="nav-el" onClick={() => loginWithRedirect()}>Log in</span>
+        <span className="nav-el" onClick={() => loginWithRedirect()}>Sign up</span>
+      </>
+    );
   }
 
   return (
@@ -74,10 +75,7 @@ function Nav() {
           <Link className="nav-el" to="/">
             <span className="nav-el">home</span>
           </Link>
-          <Link className="nav-el" to="/lists">
-            {" "}
-            <span className="nav-el">lists</span>{" "}
-          </Link>
+
           <Link className="nav-el" to="/about">
             {" "}
             <span className="nav-el">about</span>{" "}
@@ -116,7 +114,7 @@ function Nav() {
                   }}
                 />
               </form>
-
+              </div>
               <div className="suggestion-container">
                 {suggestions &&
                   suggestions.map((suggestion, i) => (
@@ -131,9 +129,13 @@ function Nav() {
                     </div>
                   ))}
               </div>
-            </div>
-            { isAuthenticated ? <Link to="/">My Lists</Link> : null}
-            {" "}
+            
+            {isAuthenticated ? (
+              <Link className="nav-el" to="/lists">
+                {" "}
+                <span className="nav-el">my lists</span>{" "}
+              </Link>
+            ) : null}{" "}
             {navItems}
             <span></span>
           </div>

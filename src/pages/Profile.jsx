@@ -5,12 +5,10 @@ import { useEffect } from "react";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log(user);
 
   useEffect(() => {
     const serverUrl = `${process.env.REACT_APP_SERVER_URL}/auth`;
     const userSub = JSON.stringify({ auth0Id: user.sub });
-    console.log(user.sub);
     axios
       .post(serverUrl, userSub, {
         headers: {

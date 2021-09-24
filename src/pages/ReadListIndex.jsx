@@ -73,6 +73,7 @@ function ReadListIndex() {
       description: newDescription,
       picture: newPicture,
       createdBy: user.nickname,
+      books:[]
     };
     createList(list);
     setToggleAdd(!toggleAdd);

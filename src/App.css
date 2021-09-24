@@ -134,6 +134,7 @@ margin:0;
 }
 .nav-search{
   display:flex;  
+  
 }
 .nav-container{
   margin:0 auto;
@@ -152,7 +153,7 @@ margin:0;
 .nav-right{
   display:flex;
   justify-content: space-around;
-  min-width: 50vh;
+  min-width: 60vh;
 }
 
 .nav-el{

@@ -42,15 +42,15 @@ function OneList(props) {
     const token = await getAccessTokenSilently();
     const updateUrl = `${url}/${list._id}`;
     try {
-      const response = await axios.put(updateUrl, data,
-        {
+      const response = await axios.put(updateUrl, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        
       });
-      setList(response.data);
+      if (typeof response !== "undefined") {
+        setList(response.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -63,6 +63,7 @@ function OneList(props) {
       description: newDescription,
       picture: newPicture,
       createdBy: user.nickname,
+      books:list.books
     };
     updateList(updatedList);
     setToggleAdd(!toggleAdd);
