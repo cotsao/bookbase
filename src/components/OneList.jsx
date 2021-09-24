@@ -15,13 +15,22 @@ function OneList(props) {
   
   function deleteBookHandler(bookId) {
     const deleteBook = async () => {
-      const response = await axios
-        .delete(`${url}/${props.list._id}${bookId}`)
-        .catch(function (error) {
-          console.log(error);
-        });
-      setList(response.data);
-      console.log(response.data);
+      const data = JSON.stringify({auth0ID:user.sub})
+      const token = await getAccessTokenSilently();
+      try {
+        let response = await axios.delete(`${url}/${props.list._id}${bookId}`,{
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          data:data
+        })
+        if (typeof response !== "undefined") {
+          setList(response.data);
+        }
+      } catch (error){
+        console.log(error)
+      } 
     };
     deleteBook();
   }

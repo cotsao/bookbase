@@ -16,17 +16,14 @@ function ReadListIndex() {
   }, [getAccessTokenSilently]);
 
   function getIndex(endPoint) {
-    console.log("getindex start")
     const loadIndex = async () => {
       const token = await getAccessTokenSilently();
       try {
         const response = await axios.get(endPoint, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log("getindex reponse")
         if (typeof response !== "undefined") {
           setLists(response.data);
-          console.log("getindex reponse should be set")
         }
       } catch (error) {
         console.log(error);
