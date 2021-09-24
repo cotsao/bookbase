@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import logo from "../images/logo.png";
+import { useAuth0 } from "@auth0/auth0-react";
+
 const axios = require("axios");
 function Nav() {
   const [bookSearch, setbookSearch] = useState([]);
   const [searchText, setsearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const { loginWithRedirect, logout,isAuthenticated  } = useAuth0();
   const history = useHistory();
-
+  
   useEffect(() => {
     const searchUrl = `http://openlibrary.org/search.json?title=${searchText}&limit=10`;
     const loadSearch = async () => {
@@ -41,6 +44,23 @@ function Nav() {
     setsearchText("");
     setSuggestions([]);
   }
+  let navItems;
+  if(isAuthenticated) {
+      navItems = (
+          <>
+              <Link to="/profile">Profile</Link>
+              <span onClick={() => logout({ returnTo: window.location.origin })}>Log out</span>
+          </>
+      )
+  } else {
+      navItems = (
+        <>
+          <span onClick={() => loginWithRedirect()}>Log in</span>
+          <span onClick={() => loginWithRedirect()}>Sign up</span>
+
+        </>
+      )
+  }
 
   return (
     <header className="nav-bar lg-container med-font">
@@ -69,15 +89,15 @@ function Nav() {
               <svg
                 id="nav-search-logo"
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-search"
+                className="icon icon-tabler icon-tabler-search"
                 width="44"
                 height="44"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="#2c3e50"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <circle cx="10" cy="10" r="7" />
@@ -112,8 +132,10 @@ function Nav() {
                   ))}
               </div>
             </div>
-            <span>signup</span>
-            <span>login</span>
+            { isAuthenticated ? <Link to="/">My Lists</Link> : null}
+            {" "}
+            {navItems}
+            <span></span>
           </div>
         </ul>
       </nav>

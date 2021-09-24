@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import OneList from "../components/OneList";
 const axios = require("axios");
-const url = "http://localhost:4000/api/list";
+const url = `${process.env.REACT_APP_SERVER_URL}/list`;
 function ReadListIndex() {
+  const { user, getAccessTokenSilently } = useAuth0();
   const [lists, setLists] = useState([]);
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
@@ -11,22 +13,61 @@ function ReadListIndex() {
 
   useEffect(() => {
     getIndex(url);
-  }, []);
+  }, [getAccessTokenSilently]);
+
   function getIndex(endPoint) {
+    console.log("getindex start")
     const loadIndex = async () => {
-      const response = await axios.get(endPoint).catch(function (error) {
+      const token = await getAccessTokenSilently();
+      try {
+        const response = await axios.get(endPoint, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log("getindex reponse")
+        if (typeof response !== "undefined") {
+          setLists(response.data);
+          console.log("getindex reponse should be set")
+        }
+      } catch (error) {
         console.log(error);
-      });
-      console.log(response.data);
-      setLists(response.data);
+      }
     };
     loadIndex();
   }
-  function createList(newList) {
-    axios.post(url, newList).then(function (res) {
-      console.log(res);
+  async function createList(newList) {
+    const data = JSON.stringify({ auth0ID: user.sub, newList: newList });
+    
+    const token = await getAccessTokenSilently();
+    try {
+      axios.post(url, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       getIndex(url);
-    });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  function deleteListHandler(listId) {
+    const deleteList = async () => {
+      const data = JSON.stringify({auth0ID:user.sub})
+      const token = await getAccessTokenSilently();
+      try {
+        await axios.delete(`${url}/${listId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          data:data
+        });
+        getIndex(url);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    deleteList();
   }
   function createFormSubmit(event) {
     event.preventDefault();
@@ -34,18 +75,10 @@ function ReadListIndex() {
       title: newTitle,
       description: newDescription,
       picture: newPicture,
+      createdBy: user.nickname,
     };
     createList(list);
     setToggleAdd(!toggleAdd);
-  }
-  function deleteListHandler(listId) {
-    const deleteList = async () => {
-      await axios.delete(`${url}/${listId}`).catch(function (error) {
-        console.log(error);
-      });
-      getIndex(url);
-    };
-    deleteList();
   }
 
   const addListForm = (
@@ -70,7 +103,7 @@ function ReadListIndex() {
   );
   const renderLists = lists.map((list, idx) => {
     return (
-      <div>
+      <div key={idx}>
         <button onClick={() => deleteListHandler(list._id)}>Delete List</button>
         <OneList list={list} key={idx} />
       </div>

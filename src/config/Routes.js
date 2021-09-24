@@ -5,13 +5,16 @@ import SubjectShowPage from "../pages/SubjectShowPage.jsx";
 import AuthorShowPage from "../pages/AuthorShowPage.jsx";
 import ReadListIndex from "../pages/ReadListIndex.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
+import Profile from "../pages/Profile.jsx";
+import ProtectedRoute from "../auth/ProtectedRoute.jsx";
 
 function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={Homepage} />
-      <Route exact path="/lists" component={ReadListIndex} />
+      <ProtectedRoute exact path="/lists" component={ReadListIndex} />
       <Route exact path="/about" component={AboutPage} />
+      <ProtectedRoute path="/profile" component={Profile} />
       <Route
         exact
         path="/works/:bookID/"

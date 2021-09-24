@@ -1,13 +1,18 @@
 import axios from "axios";
 import OneBook from "./OneBook";
+import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
-const url = "http://localhost:4000/api/list";
+const url = `${process.env.REACT_APP_SERVER_URL}/list`;
+
 function OneList(props) {
+  const { user, getAccessTokenSilently } = useAuth0();
   const [list, setList] = useState(props.list);
   const [newTitle, setNewTitle] = useState(list.title);
   const [newDescription, setNewDescription] = useState(list.description);
   const [newPicture, setNewPicture] = useState(list.picture);
   const [toggleAdd, setToggleAdd] = useState(false);
+  
+  
   function deleteBookHandler(bookId) {
     const deleteBook = async () => {
       const response = await axios

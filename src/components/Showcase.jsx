@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import "react-multi-carousel/lib/styles.css";
 import AddToReadList from "./AddToReadList";
 const axios = require("axios");
-const url = "http://localhost:4000/api/list";
+const url = `${process.env.REACT_APP_SERVER_URL}/list`;
 function Showcase() {
+  const { user, getAccessTokenSilently } = useAuth0();
   const [showBooks, setShowBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("fantasy");
   const [dropdown, setDropdown] = useState(false);
@@ -29,13 +31,20 @@ function Showcase() {
   useEffect(() => {
     getIndex(url);
   }, []);
+
   function getIndex(endPoint) {
     const loadIndex = async () => {
-      const reponse = await axios.get(endPoint).catch(function (error) {
+      const token = await getAccessTokenSilently();
+      try {
+        const response = await axios.get(endPoint, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (typeof response !== "undefined") {
+          setLists(response.data);
+        }
+      } catch (error) {
         console.log(error);
-      });
-      console.log(reponse.data);
-      setLists(reponse.data);
+      }
     };
     loadIndex();
   }
@@ -73,17 +82,17 @@ function Showcase() {
     setDropdown(!dropdown);
     setIndex(idx);
   }
-  function handleSubjClick(subject,idx) {
+  function handleSubjClick(subject, idx) {
     setSearchTerm(subject);
-    setButtonIndex(idx)
+    setButtonIndex(idx);
   }
   const subj = ["Fantasy", "Science Fiction", "Romance", "History"];
   const subjBtn = subj.map((subject, idx) => {
     return (
-      <span 
-      key={idx} 
-      onClick={() => handleSubjClick(subject,idx)}
-      className={buttonIndex===idx ? 'color-2':null}
+      <span
+        key={idx}
+        onClick={() => handleSubjClick(subject, idx)}
+        className={buttonIndex === idx ? "color-2" : null}
       >
         {subject}
       </span>
@@ -91,13 +100,15 @@ function Showcase() {
   });
   return (
     <div className="showcase-container">
-      <h1 className="showcase-title big-font">Search <span className="color-2">books</span></h1>
+      <h1 className="showcase-title big-font">
+        Search <span className="color-2">books</span>
+      </h1>
       <h6 className="showcase-description med-font">
         Lorem ipsum is placeholder text commonly used in the graphic, print, and
         publishing industries for previewing layouts and visual mockups.
       </h6>
       <div className="showcase-btn sml-font ">{subjBtn}</div>
-      
+
       <div className="showcase-grid-container">{cardElements}</div>
     </div>
   );

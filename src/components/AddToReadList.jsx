@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 const axios = require("axios");
-const url = "http://localhost:4000/api/list";
-
+const url = `${process.env.REACT_APP_SERVER_URL}/list`;
 function AddToReadList(props) {
+  const { user, getAccessTokenSilently } = useAuth0();
   const [listId, setListId] = useState("");
   const renderOptions = props.lists.map((list, idx) => {
     return (
@@ -14,19 +15,24 @@ function AddToReadList(props) {
   function onSelectChange(id) {
     setListId(id);
   }
-  function onButtonClick() {
-    console.log("clicked");
-    axios
-      .post(`${url}/${listId}/books`, { books: props.bookKey })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
+
+  async function onButtonClick() {
+    const data = JSON.stringify({ auth0ID: user.sub, books: props.bookKey });
+    const token = await getAccessTokenSilently();
+    console.log(`${url}/${listId}/books`);
+    try {
+      axios.post(`${url}/${listId}/books`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
       });
-    props.toggleDropDown(props.index);
+      props.toggleDropDown(props.index);
+    } catch (error) {
+      console.log(error);
+    }
   }
-  /* onMouseLeave={()=>props.mouseLeave(props.index)} */
+
   return (
     <div className="add-btn">
       <select onChange={(e) => onSelectChange(e.target.value)}>
