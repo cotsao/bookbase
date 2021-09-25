@@ -7,6 +7,7 @@ const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   useEffect(() => {
+    console.log(user);
     const serverUrl = `${process.env.REACT_APP_SERVER_URL}/auth`;
     const userSub = JSON.stringify({ auth0Id: user.sub });
     axios
@@ -29,10 +30,12 @@ const Profile = () => {
 
   return (
     isAuthenticated && (
-      <div className="shove-down">
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
+      <div className="profile-page">
+        <div className="profile-content">
+          <img className="profile-pic" src={user.picture} alt={user.name} />
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+        </div>
       </div>
     )
   );

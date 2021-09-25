@@ -59,8 +59,8 @@ function Showcase() {
   const cardElements = showBooks.slice(0, 8).map((book, idx) => {
     const imgUrl = `http://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
     const addSection = (
-      <div>
-        <h2 onClick={() => toggleDropdown(idx)} className="add-btn sml-font">
+      <div className="add-btn">
+        <h2 onClick={() => toggleDropdown(idx)} className="add-txt sml-font">
           Add
         </h2>
         {dropdown && idx === index && (
@@ -97,6 +97,7 @@ function Showcase() {
   }
   function handleSubjClick(subject, idx) {
     setSearchTerm(subject);
+    setLoading(true)
     setButtonIndex(idx);
   }
   const subj = ["Fantasy", "Science Fiction", "Romance", "History"];

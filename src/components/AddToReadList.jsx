@@ -34,7 +34,7 @@ function AddToReadList(props) {
   }
 
   return (
-    <div className="add-btn">
+    <div className="add-dropdown">
       <select onChange={(e) => onSelectChange(e.target.value)}>
         <option value="" selected>
           Select List

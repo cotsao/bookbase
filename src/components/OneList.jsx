@@ -63,7 +63,8 @@ function OneList(props) {
       description: newDescription,
       picture: newPicture,
       createdBy: user.nickname,
-      books:list.books
+      books: props.list.books,
+      _id:props.list._id
     };
     updateList(updatedList);
     setToggleAdd(!toggleAdd);
@@ -71,15 +72,15 @@ function OneList(props) {
   const bookList = list.books.map((book, idx) => {
     return (
       <div key={idx}>
-        <OneBook book={book} />
-        <button onClick={() => deleteBookHandler(book)}>delete book</button>
+        <OneBook deleteBookHandler={deleteBookHandler} book={book} />
+        
       </div>
     );
   });
   const updateListForm = (
-    <div>
+    <div className="new-list-form-container">
       <span>Update List</span>
-      <form onSubmit={(e) => createFormSubmit(e)}>
+      <form className="new-list-form" onSubmit={(e) => createFormSubmit(e)}>
         <input
           onChange={(e) => setNewTitle(e.target.value)}
           value={newTitle}
@@ -94,14 +95,59 @@ function OneList(props) {
         ></input>
         <button type="submit">Update List</button>
       </form>
+      <svg
+        onClick={(e) => setToggleAdd(!toggleAdd)}
+        xmlns="http://www.w3.org/2000/svg"
+        className="close-create-form icon icon-tabler icon-tabler-x"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="#2d373c"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
     </div>
   );
   return (
-    <div>
-      <h6>{list.title}</h6>
-      <p>{list.description}</p>
-      <img src={list.picture} alt="N/A" />
-      <button onClick={(e) => setToggleAdd(!toggleAdd)}>Update the List</button>
+    <div className="one-list">
+      <div className="one-list-content">
+        <div className="one-list-text">
+          <div>
+          <h6 className="one-list-title big-font ">{list.title} {" "}<span className="one-list-edit" onClick={(e) => setToggleAdd(!toggleAdd)}>
+        (edit)
+      </span></h6>
+      <span className="one-list-author">created by {list.createdBy}</span>
+          </div>
+          
+          <p className="one-list-description sml-font">{list.description}</p>
+        </div>
+        <img className="one-list-image" src={list.picture} alt="N/A" />
+        <svg
+        onClick={() => props.deleteListHandler(props.list._id)}
+        xmlns="http://www.w3.org/2000/svg"
+        className=" list-delete icon icon-tabler icon-tabler-x"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="#2d373c"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+      </div>
+
+      
       {toggleAdd && updateListForm}
 
       {bookList}

@@ -1,7 +1,7 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-function OneBook(props) {
+import { useState, useEffect } from "react";
+import axios from "axios";
+function PublicOneBook(props) {
   const [bookDetails, setBookDetails] = useState({});
   const [coverIds, setCoverIds] = useState([]);
   useEffect(() => {
@@ -31,32 +31,17 @@ function OneBook(props) {
   return (
     <div className="one-book-container">
       <div className="temp-flex">
-        <img className="one-book-img"src={imgUrl} alt="N/A" />
+        <img className="one-book-img" src={imgUrl} alt="N/A" />
 
         <div className="one-book-text">
-          <Link  className="one-book-title" to={props.book}> {bookDetails.title}</Link>
+          <Link className="one-book-title" to={props.book}>
+            {" "}
+            {bookDetails.title}
+          </Link>
           <span className="one-book-description">{descriptShort}</span>
         </div>
       </div>
-      <svg
-        onClick={() => props.deleteBookHandler(props.book)}
-        xmlns="http://www.w3.org/2000/svg"
-        className="book-delete icon icon-tabler icon-tabler-x"
-        width="22"
-        height="22"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="#2d373c"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <line x1="18" y1="6" x2="6" y2="18" />
-        <line x1="6" y1="6" x2="18" y2="18" />
-      </svg>
-      
     </div>
   );
 }
-export default OneBook;
+export default PublicOneBook;

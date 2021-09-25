@@ -6,7 +6,7 @@ function Testimonials() {
           <div class="masonry-content">
             <img
               src="https://picsum.photos/450/325?image=100"
-              alt="Dummy Image"
+              alt="N/A"
             />
             <h3 class="masonry-title">
               Nesciunt aspernatur eaque similique laudantium a
@@ -23,7 +23,7 @@ function Testimonials() {
           <div class="masonry-content">
             <img
               src="https://picsum.photos/450/450?image=200"
-              alt="Dummy Image"
+              alt="N/A"
             />
             <h3 class="masonry-title">
               Consequatur adipisci neque possimus quod ut quidem omnis numquam
@@ -40,7 +40,7 @@ function Testimonials() {
           <div class="masonry-content">
             <img
               src="https://picsum.photos/450/280?image=300"
-              alt="Dummy Image"
+              alt="N/A"
             />
             <h3 class="masonry-title">Adipisci alias ullam est accusamus</h3>
             <p class="masonry-description">
@@ -54,7 +54,7 @@ function Testimonials() {
           <div class="masonry-content">
             <img
               src="https://picsum.photos/450/540?image=400"
-              alt="Dummy Image"
+              alt="N/A"
             />
             <h3 class="masonry-title">
               Dolor sit amet, consectetur adipisicing elit
@@ -71,7 +71,7 @@ function Testimonials() {
           <div class="masonry-content">
             <img
               src="https://picsum.photos/450/380?image=500"
-              alt="Dummy Image"
+              alt="N/A"
             />
             <h3 class="masonry-title">
               Veritatis aut repellendus, quidem nesciunt consequatur nulla sed
@@ -89,7 +89,7 @@ function Testimonials() {
           <div class="masonry-content">
             <img
               src="https://picsum.photos/450/300?image=600"
-              alt="Dummy Image"
+              alt="N/A"
             />
             <h3 class="masonry-title">
               Culpa quo animi ut temporibus, et distinctio facere perspiciatis
@@ -105,7 +105,7 @@ function Testimonials() {
           <div class="masonry-content">
             <img
               src="https://picsum.photos/450/400?image=700"
-              alt="Dummy Image"
+              alt="N/A"
             />
             <h3 class="masonry-title">
               Molestiae quod consectetur enim modi unde expedita dicta placeat?
@@ -122,7 +122,7 @@ function Testimonials() {
           <div class="masonry-content">
             <img
               src="https://picsum.photos/450/300?image=800"
-              alt="Dummy Image"
+              alt="N/A"
             />
             <h3 class="masonry-title">
               Sit amet, consectetur adipisicing elit. Incidunt, commodi!

@@ -2,6 +2,7 @@
 /*                                   imports                                  */
 /* -------------------------------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant&family=Hind+Guntur:wght@300;400;500;600;700&family=Hind:wght@300;400;500;600;700&family=Maitree:wght@200;300;400;500;600&family=Merriweather&family=Raleway:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&family=Roboto+Slab:wght@100;300;400;500;700;800;900&display=swap');
+
 /* -------------------------------------------------------------------------- */
 /*                                   global                                   */
 /* -------------------------------------------------------------------------- */
@@ -38,6 +39,9 @@
 .color-2{
   color:#895B4A;
 }
+/* --------------------------------- colors --------------------------------- */
+/* dark background-color: #40525C;
+wjote background-color: #F1F0EB */
 /* #endregion */
 /* -------------------------------------------------------------------------- */
 /*                                 grid effect                                */
@@ -466,15 +470,17 @@ z-index: 2;
   border-radius:5px;
   height: 15rem;  
 }
-.add-btn{
+.add-btn{  
+  text-align: left;
+  padding-left: 1rem;  
+}
+.add-txt{
   text-align: left;
   color:rgb(45, 55, 60);
   font-weight: 500;
   letter-spacing: -0.05em;
   font-size: 16px;
   margin:0;
-  padding-left: 1rem;
-  
 }
 .showcase-btn-active{
 
@@ -483,6 +489,7 @@ z-index: 2;
 /* -------------------------------------------------------------------------- */
 /*                                testimonials                                */
 /* -------------------------------------------------------------------------- */
+/* #region */
 .testimonial-wrapper{
   width:100%;
   
@@ -543,6 +550,7 @@ z-index: 2;
 .div6 {
    
 } 
+/* #endregion */
   
 /* -------------------------------------------------------------------------- */
 /*                              subject showcase                              */
@@ -648,6 +656,434 @@ z-index: 2;
   overflow: hidden;
 }
 /* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/*                             personal list index                            */
+/* -------------------------------------------------------------------------- */
+.personal-list-index-wrapper{
+  width: 100%;
+  min-height: 100vh;
+  background-color: #40525C;
+  margin-top: 5vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  
+  
+}
+.personal-list-index-title-content{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 20vh;
+  justify-content: center;
+}
+.personal-list-index-brand{
+  color:#A5967D;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size:16px;
+  letter-spacing: 0.05em;
+}
+.personal-list-index-title{
+  color:#F1F0EB;
+  font-size: 42px;
+  line-height: 1;
+  padding-top: 1rem;
+}
+.create-list-button{
+  cursor: pointer;
+  text-align: left;
+  color:rgb(241, 240, 235,0.5);
+  transition: color 0.5s ease;
+}
+.create-list-button:hover{
+  color:rgb(241, 240, 235);
+}
+.new-list-form-container{
+  position: fixed;
+  background-color: #F1F0EB;
+  top: 50%;
+  left: 50%;
+  width:36rem;
+  display:flex;
+  flex-direction: column;
+  margin-top: -20vh;
+  margin-left: -18rem;
+  align-items: center;
+  min-height: 40vh;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.new-list-form-container span{
+  margin: 1rem 0;
+}
+.new-list-form{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 80%;
+}
+.close-create-form{
+  position: absolute;
+  right:0;
+  top:0;
+  padding:1rem 1rem 0 0;
+  cursor: pointer;
+}
+.one-list{
+  max-width: 72rem;
+  margin:0 auto;
+  background-color: #F1F0EB;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 2rem;;
+  padding-bottom: 5vh;
+}
+.one-list-author{
+  font-family: 'Maitree', serif;
+  font-weight: 600;
+  font-size:12px;
+  color:rgb(64, 82, 92,0.8);
+}
+.one-list-content{
+  margin: 0 auto;
+  display:flex;
+  max-width: 80%;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(64, 82, 92);
+  margin-bottom: 1rem;
+}
+.one-list-title{
+  font-size: 24px;
+  margin:0;
+  color: rgb(64, 82, 92);
+}
+.one-list-description{
+  font-size:14px;
+  margin:0;
+  line-height: 1;
+  color: rgb(45, 55, 60,0.8);
+  font-weight: 500;
+  padding-top:1rem;
+}
+.temp-flex{
+  display:flex;
+}
+.one-list-text{
+  max-width: 31%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.one-list-image{
+  border-radius: 5px;
+  max-width: 100%;
+  max-height: 30vh;
+  
+}
+.book-delete{
+  border: solid 0px #2d373c;
+  border-radius: 25px;
+  transition: border-width ease;
+  cursor: pointer;
+}
+.book-delete:hover{
+  border-width: 1px;
+
+}
+.list-delete{
+  position: absolute;
+  top:0%;
+  right:0%;
+  padding: 1rem 1rem 0 0;
+  cursor: pointer;
+}
+
+
+.one-list-edit{
+ font-size: 12px;
+ cursor: pointer;
+ color: rgb(64, 82, 92, 0.5);
+ transition: color 0.5s ease;
+}
+.one-list-edit:hover{
+  color: rgb(64, 82, 92, 0.8);
+}
+.one-book-container{
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px rgb(45, 55, 60,0.5);
+  padding: 0.5rem 0;
+}
+.one-book-text{
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+.one-book-description{
+  font-size:10px;
+  max-width: 60%;
+}
+.one-book-img{
+  border-radius: 5px;
+}
+.one-book-title{
+  text-decoration: none;
+  font-family: 'Maitree', serif;
+  color: rgb(64, 82, 92);
+  transition: color 0.5s ease;
+  font-weight: 500;
+}
+.one-book-title:hover{
+  color: #A5967D;
+
+}
+/* -------------------------------------------------------------------------- */
+/*                                   profile                                  */
+/* -------------------------------------------------------------------------- */
+.profile-page{
+  min-height: 80vh;
+  background-color: #40525C;
+  padding-top: 5vh;;
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-content{
+  display: flex;
+  flex-direction: column;
+  margin:0;
+  font-family: 'Raleway', sans-serif;
+  color: rgb(64, 82, 92);
+  background-color: #F1F0EB;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.profile-pic{
+  border-radius: 10px;
+  border: solid 1px rgb(64, 82, 92);
+}
+/* -------------------------------------------------------------------------- */
+/*                              book showpage                              */
+/* -------------------------------------------------------------------------- */
+.book-showpage-wrapper{
+  width:100%;
+  min-height:100vh;
+  background-color: #40525C;
+  margin-top: 10vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+
+}
+.book-container{
+  background-color: #F1F0EB;
+  margin: 0 auto;
+  width:72rem;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  padding-top:2rem;
+  min-height: 80vh;
+}
+.book-left-col{
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgb(64, 82, 92,0.2);
+  padding:1rem;
+  border-radius: 5px;
+  max-height: 70vh;
+}
+.book-right-col{
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  padding:1rem;
+  
+  
+}
+.book-title{
+  font-family: "Raleway";
+  
+  margin: 0;
+  font-size: 24px;
+  color: #895B4A;
+  letter-spacing: 0.05em;
+  
+
+}
+.related-subjects{
+  color:rgb(64, 82, 92);
+  line-height: 1.5;
+}
+.book-image{
+  max-height:auto;  
+  min-height: 40vh;
+  border-radius: 5px;
+}
+.book-subject{
+  border-right: solid 1px rgb(64, 82, 92,0.5);
+  color:rgb(64, 82, 92,0.8);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.5s ease;
+  
+}
+.book-subject:hover{
+  color:rgb(64, 82, 92);
+}
+.book-author{
+  color:rgb(64, 82, 92);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  border-right: solid 1px rgb(64, 82, 92,0.5);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin:0.5rem 0 0.25rem 0;
+  text-decoration: none;
+  
+  
+}
+
+.shift-left{
+  margin-left:-0.5rem;
+}
+.book-descript{
+  max-width: 80%;
+  font-size: 14px;
+  margin:0;
+  line-height: 1.5;
+  color: rgb(45, 55, 60);
+  font-weight: 400;
+  padding-top:1rem;
+  font-family: 'Roboto Slab', serif;
+  
+}
+.book-publish{
+  font-size: 14px;
+  margin:0;
+  line-height: 1;
+  color: rgb(45, 55, 60);
+  font-weight: 400;
+  padding-top:1rem;
+  font-family: 'Roboto Slab', serif;
+}
+.book-links{
+  padding-top: 1rem;
+  color: rgb(45, 55, 60);
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  font-size:14px;
+  margin:0;
+}
+.book-links a{
+  font-family: 'Hind Guntur', sans-serif;
+  color: rgb(45, 55, 60);
+}
+.book-link-flex{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  
+
+}
+.toggle-show{
+  font-family: 'Roboto Slab', serif;
+  color: rgb(165, 150, 125,0.8);
+  font-weight: 500;
+  transition: color 0.5s ease;
+  cursor: pointer;
+  font-size: 14px;
+}
+.toggle-show:hover{
+  color: rgb(165, 150, 125);
+}
+.book-add-btn h2{
+  margin:0;
+  font-size:16px;
+  display:flex;
+  flex-direction: column;
+}
+.add-dropdown{
+  display: flex;
+  flex-direction: column;
+}
+.book-add-txt {
+  color: rgb(165, 150, 125,0.8);
+  cursor: pointer;
+  transition: color 0.5s ease;
+}
+.book-add-txt:hover{
+  color: rgb(165, 150, 125);
+  
+}
+/* -------------------------------------------------------------------------- */
+/*                               author showpage                              */
+/* -------------------------------------------------------------------------- */
+.works-container{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  
+}
+.one-work-img{
+  border-radius: 5px;
+}
+.one-work{
+  display: flex;
+  margin: 0 auto;
+  width:80%;
+  padding: 0.5rem;
+    
+  align-items: center;
+  border-bottom: 1px solid rgb(45, 55, 60,0.5);
+  
+}
+.one-work-text{
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+.one-work-title{
+  text-decoration: none;
+  font-family: 'Maitree', serif;
+  color: rgb(64, 82, 92);
+  transition: color 0.5s ease;
+  font-weight: 500;
+}
+.one-work-title:hover{
+  color: #A5967D;
+
+}
+.one-work-description{
+  font-size:12px;
+  
+}
+.b-day{
+  color: rgb(64, 82, 92);
+  font-size: 12px;
+  font-weight: 500;
+  
+}
+.wiki{
+  text-decoration: none;
+  color: rgb(64, 82, 92,0.8);
+  transition: color 0.5s ease;
+}
+.wiki:hover{
+  
+  color: rgb(64, 82, 92);
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                   Footer                                   */
 /* -------------------------------------------------------------------------- */
@@ -685,7 +1121,7 @@ margin: 3vh 0 3vh 0;
 /* #endregion */
 
 
-
+/* ------------------------------ masonry test ------------------------------ */
 .masonry-wrapper {
   padding: 1.5em;
   background-color: #40525C;

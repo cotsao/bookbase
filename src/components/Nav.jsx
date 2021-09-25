@@ -80,7 +80,10 @@ function Nav() {
             {" "}
             <span className="nav-el">about</span>{" "}
           </Link>
-          <span className="nav-el">link 3</span>
+          <Link className="nav-el" to="/list/index">
+            {" "}
+            <span className="nav-el">lists</span>{" "}
+          </Link>
 
           <div className="nav-right">
             <div className="nav-search">
