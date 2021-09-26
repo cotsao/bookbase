@@ -24,7 +24,6 @@ function Showcase() {
           .toLowerCase()}.json?details=true`
       );
       if (typeof response !== "undefined") {
-        console.log(response.data);
         setShowBooks(response.data.works);
         setLoading(false)
       }
