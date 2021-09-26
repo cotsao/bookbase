@@ -12,7 +12,7 @@ ReactDOM.render(
       domain="dev-d5iqohfm.us.auth0.com"
       clientId="4y4RYNsZCArccTXpX6aui2P0gSjyxLE9"
       redirectUri={window.location.origin + "/profile"}
-      audience={process.env.REACT_APP_SERVER_URL}
+      audience={`${process.env.REACT_APP_SERVER_URL}/`}
     >
       <Router>
         <App />
