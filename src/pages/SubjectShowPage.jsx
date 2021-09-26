@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import loadingAnim from '../images/loading.svg'
 const axios = require("axios");
 function SubjectShowPage(props) {
   const [subject, setSubject] = useState([]);
   const [infoCard, setInfoCard] = useState("");
   const [delayHandler, setDelayHandler] = useState(null);
   const [index, setIndex] = useState(0);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const subjectUrl = `https://openlibrary.org/subjects/${props.match.params.subjectName
       .toLowerCase()}.json?details=true`;
@@ -16,6 +17,7 @@ function SubjectShowPage(props) {
       });
       if (typeof response != "undefined") {
         setSubject(response.data.works);
+        setLoading(false)
       }
     };
     loadSubject();
@@ -42,10 +44,12 @@ function SubjectShowPage(props) {
             descript = response.data.description.value;
           }
           const cardInfo = (
+            
             <div className="info-card">
               <h5>{response.data.title}</h5>
               <h6>{descript}</h6>
             </div>
+            
           );
           setInfoCard(cardInfo);
         };
@@ -83,9 +87,11 @@ function SubjectShowPage(props) {
     );
   });
   return (
-    <div>
-      <h3>{props.match.params.subjectName}</h3>
-      <div className="grid-body">{allSubjectBooks}</div>
+    <div className="subject-showpage-container">
+      <span className="personal-list-index-brand">bookbase</span>
+        <span className="personal-list-index-title sml-font">{props.match.params.subjectName}</span>
+      
+        {loading ? <img src={loadingAnim} alt="" />:<div className="grid-body">{allSubjectBooks}</div>}
     </div>
   );
 }

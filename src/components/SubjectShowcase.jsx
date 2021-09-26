@@ -22,10 +22,7 @@ function SubjectShowcase(props) {
     },
   };
   const subjectData = [
-    {
-      title: "Art",
-      picture: "https://openlibrary.org/static/images/categories/art.svg",
-    },
+    
     {
       title: "Science Fiction",
       picture:
@@ -72,6 +69,9 @@ function SubjectShowcase(props) {
     {
       title: "Music",
       picture: "https://openlibrary.org/static/images/categories/music.svg",
+    },{
+      title: "Art",
+      picture: "https://openlibrary.org/static/images/categories/art.svg",
     },
   ];
 
@@ -92,7 +92,8 @@ function SubjectShowcase(props) {
         <h1 className="subject-showcase-title big-font">Browse by <span className="color-2">Subject</span></h1>
         <p className="subject-showcase-description med-font">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
         <div>
-        <Carousel responsive={responsive} infinite={true} arrows={false}>
+        <Carousel responsive={responsive} infinite={true} arrows={false}
+        >
           {cardElements}
         </Carousel>
         </div>

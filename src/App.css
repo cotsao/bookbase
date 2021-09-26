@@ -2,7 +2,7 @@
 /*                                   imports                                  */
 /* -------------------------------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant&family=Hind+Guntur:wght@300;400;500;600;700&family=Hind:wght@300;400;500;600;700&family=Maitree:wght@200;300;400;500;600&family=Merriweather&family=Raleway:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&family=Roboto+Slab:wght@100;300;400;500;700;800;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 /* -------------------------------------------------------------------------- */
 /*                                   global                                   */
 /* -------------------------------------------------------------------------- */
@@ -11,6 +11,27 @@
   margin:0 auto;
   width: calc(100% - 4rem);
   max-width: 72rem;
+}
+select{
+  font-family: "Roboto";
+  background: none;
+  box-shadow: none;
+  border-style: solid;
+  cursor: pointer;
+  border-radius: 10px;
+}
+option{
+  font-family:"Roboto-Slab" ;
+  background: none;
+  border-style: solid;
+}
+.add-list-btn{
+  font-family:"Roboto-Slab" ;
+  background: none;
+  border-style: solid;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: left;
 }
 .sml-container{
   max-width:25%;
@@ -165,6 +186,7 @@ margin:0;
   padding:0;
   text-decoration: none;
   transition: color 0.5s ease;
+  cursor: pointer;
 }
 .nav-el:hover{
   color:#a5967d;  
@@ -317,31 +339,90 @@ z-index: 2;
 }
 .aboutpage-container{
   text-align: left;
+  background-color: #F1F0EB;
+  border-radius: 10px;
+  margin-top: 5vh;;
+  padding-bottom: 1rem;
 }
 .who-we-are{
+  padding:1rem;
   max-width:60vh;
   margin:0 auto;
 }
 .team-section{
   display:flex;
   justify-content: space-around;
+  padding-top: 6rem;  
+}
+.roboto-slab{
+  font-family: "Roboto Slab";
+  font-size: 18px;
+  color: rgb(45, 55, 60);
+  font-weight: 400;
+  font-weight: 700;
+}
+.team-name{
+  font-family: "Roboto";
+  font-size:14px;
+  color: rgb(45, 55, 60);
+  margin: 0;
+  padding-top: 0.5rem;
+}
+.roboto{
+  font-family: "Roboto";
+  color: rgb(45, 55, 60);
+  font-size:14px;
+  
+}
+.roboto-slab-title{
+  font-family: "Roboto Slab";
+  font-size: 16px;
+  color: rgb(45, 55, 60);
+  
+}
+
+.about-page-title{
+  text-align: center;
+  padding-top: 1rem;
+  font-family: 'Raleway', sans-serif;
+  color: rgb(45, 55, 60);
+  font-size: 24px;
+  letter-spacing: 0.05em;  
+}
+
+.team-card{
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 .team-image{
   max-width:30vh;
-  max-height:30vh
+  max-height:30vh;
+  margin-top: -5rem;
+  border-bottom: solid 1px rgb(45, 55, 60,0.5);
+  
   
   
 }
 .team-title{
   text-align: center;
 }
+.team-titlename{
+  padding-top: 1rem;
+}
 .About-Page{
   padding-bottom: 10vh;
+  background-color: #40525C;
+  
 }
 .team-container{
+  width: 100%;
   display:flex;
   flex-direction:column;
   align-items:space-between;
+  justify-content: center;
+  
   
 }
 /* #endregion */
@@ -595,7 +676,8 @@ z-index: 2;
   width:40%
 }
 .subject-showcase-card-title {  
-  color:#EEE;
+  color:#F1F0EB;
+  /* background-color:rgb(45, 55, 60, 0.1); */
   position: absolute;
   left: 30%;
   top: 30%;
@@ -604,7 +686,10 @@ z-index: 2;
   opacity: 0;
   transition: all 0.5s ease-in-out;
   pointer-events: none;
-  text-shadow: 2px 4px 8px black; 
+  text-shadow: 2px 4px 8px rgb(45, 55, 60); 
+  border-radius: 25px;
+  margin: 0;
+  line-height: 1;
 }
 .subject-showcase-card:hover .subject-showcase-card-title {
   opacity: 1;
@@ -616,6 +701,22 @@ z-index: 2;
 /*                              subject showpage                              */
 /* -------------------------------------------------------------------------- */
 /* #region */
+.subject-showpage-container{
+  width:100%;
+  min-height:80vh;
+  background-color: #40525C;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+  padding-top:5vh;
+  
+}
+.card-img{
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
 .grid-body {
   margin: 0 auto;
   width: calc(100% - 4rem);
@@ -626,6 +727,12 @@ z-index: 2;
   -moz-column-gap:      0px;
   column-count:         5;
   column-gap:           0px;
+  background-color: #F1F0EB;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  
 }
 .card-content {
   position: relative;
@@ -637,21 +744,16 @@ z-index: 2;
 }
 
 .info-card{
+  
   position:absolute;
-  box-sizing: border-box;
-  pointer-events: none;
-  max-height: 20rem;
-  max-width: 20rem;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  top: 25%;
+  pointer-events: none;  
+  top:0;
+  color:#F1F0EB;
   z-index:3;
-  background:white;
+  background-color:rgb(45, 55, 60, 0.8);;
   padding:10px;
   border:1px solid grey;
-  box-shadow: 0 0 2px 2px grey;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -1100,84 +1202,116 @@ z-index: 2;
   text-align: center;
 }
 .footer-logo{
-  max-width:10vh;
-  max-height: 10vh;
+  max-width:15vh;
+  max-height: 15vh;
   margin-top: 5vh;
   margin-bottom: 5vh;
 }
+.footer-logos svg{
+  width:33px;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+.footer-logos svg:hover{
+  transform:scale(1.1)
+}
 .footer-text{
-  max-width:80vh;
+  max-width:60vh;
+  color:rgb(45, 55, 60, 0.8);
+  text-align: center;
+  font-family: 'Hind Guntur', sans-serif;
+  font-size:16px;
   
+}
+.footer-descript{
+  width:30vh;
 }
 .footer-logos{
   margin: 3vh 0 3vh 0;
 }
 .footer-links{
 margin: 3vh 0 3vh 0;
+color:rgb(45, 55, 60);
+font-family: 'Hind Guntur', sans-serif;
+cursor: pointer;
+}
+.footer-link-el{
+  padding-right:3vh;
 }
 .footer-link-el{
   padding-right:3vh;
 }
 /* #endregion */
 
-
-/* ------------------------------ masonry test ------------------------------ */
-.masonry-wrapper {
-  padding: 1.5em;
+/* -------------------------------------------------------------------------- */
+/*                                 testmonials                                */
+/* -------------------------------------------------------------------------- */
+.testimonial-wrapper{
+  
   background-color: #40525C;
-  margin-right: auto;
-  margin-left: auto;
+  padding-top:1rem;
+  padding-bottom: 10vh;
 }
-.masonry-content img{
-  max-height: 30rem;
-  max-width: 25rem;
+.testimonial-content{
+  width:72rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-between;
+  margin: 0 auto;
+  height: 60vh;
 }
-.masonry {
-  columns: 1;
-  column-gap: 10px;
+.testimonial-card-section{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  width:68rem;
 }
-.masonry-item {
-  display: inline-block;
-  vertical-align: top;
-  margin-bottom: 10px;
+.testimonial-title-section{
+  text-align: center;
 }
-@media only screen and (max-width: 1023px) and (min-width: 768px) {  .masonry {
-    columns: 2;
-  }
+.testimonial-card{
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F1F0EB;
+  border-radius: 10px;
+  padding: 2rem 0;
 }
-@media only screen and (min-width: 1024px) {
-  .masonry {
-    columns: 3;
-  }
+.testimonial-card-description{
+  color:rgb(45, 55, 60, 0.8);
+  text-align: left;
+  line-height: 1;
+  font-size:16px;
+  max-width: 80%;
 }
-.masonry-item, .masonry-content {
-  border-radius: 4px;
-  overflow: hidden;
+
+.testimonial-card-title{
+  color:rgb(64, 82, 92);
+  text-align: left;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  font-size:18px;
+  margin:0;
+  padding:1rem 0;
 }
-.masonry-item {
-  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, .3));
-  transition: filter .25s ease-in-out;
-}
-.masonry-item:hover {
-  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, .3));
-}
-.masonry-content {
-  overflow: hidden;
-}
-.masonry-item {
-  color: #111111;
-  background-color: #f9f9f9;
-}
-.masonry-title, .masonry-description {
-  margin: 0;
-}
-.masonry-title {
+.testimonial-title{  
+  color: #F1F0EB;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: 'Roboto Slab', serif;
   font-weight: 700;
-  font-size: 1.1rem;
-  padding: 1rem 1.5rem;
+  margin:0.5rem 0;
+  font-size: 1.3em;
+  line-height: 1.55em;
 }
-.masonry-description {
-  padding: 1.5rem;
-  font-size: .75rem;
-  border-top: 1px solid rgba(0, 0, 0, .05);
+.testimonial-text{
+  color: #F1F0EB;
+  margin:0;
+  font-size: 14px;
+  font-weight: 300;
+  padding-bottom:0.3rem;
+
 }

@@ -1,144 +1,86 @@
 function Testimonials() {
   return (
-    <div class="masonry-wrapper">
-      <div class="masonry">
-        <div class="masonry-item">
-          <div class="masonry-content">
-            <img
-              src="https://picsum.photos/450/325?image=100"
-              alt="N/A"
-            />
-            <h3 class="masonry-title">
-              Nesciunt aspernatur eaque similique laudantium a
-            </h3>
-            <p class="masonry-description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Assumenda modi inventore, totam vero consequuntur, aut animi
-              veritatis tempora nulla facere placeat velit illum explicabo dicta
-              enim ipsum. Vitae ducimus, ratione.
+    <div className="testimonial-wrapper">
+      <div className="testimonial-content">
+        <div className="testimonial-title-section">
+          <h3 className="testimonial-title">Why People Believe in Us</h3>
+          <p className="testimonial-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+        </div>
+        <div className="testimonial-card-section">
+          <div className="testimonial-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-receipt-2"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              strokeWidth="1"
+              stroke="#895B4A"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />
+              <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5" />
+            </svg>
+            <h6 className="testimonial-card-title">We're Free</h6>
+            <p className="testimonial-card-description">
+              {" "}
+              bookbase is the results of tens of hours, allowing you to compile
+              lists in a fraction of that time. Despite that, our service will always be free.
+            </p>
+          </div>
+          <div className="testimonial-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-trending-up"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              strokeWidth="1"
+              stroke="#895B4A"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <polyline points="3 17 9 11 13 15 21 7" />
+              <polyline points="14 7 21 7 21 14" />
+            </svg>
+            <h6 className="testimonial-card-title">Limitless growth</h6>
+            <p className="testimonial-card-description">
+              While we boast an impressive count of 0 users, bookbase is ready
+              to expand. Trajectories show that there is nowhere to go but up
+              for us.
+            </p>
+          </div>
+          <div className="testimonial-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-palette"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              strokeWidth="1"
+              stroke="#895B4A"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 21a9 9 0 1 1 0 -18a9 8 0 0 1 9 8a4.5 4 0 0 1 -4.5 4h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" />
+              <circle cx="7.5" cy="10.5" r=".5" fill="currentColor" />
+              <circle cx="12" cy="7.5" r=".5" fill="currentColor" />
+              <circle cx="16.5" cy="10.5" r=".5" fill="currentColor" />
+            </svg>
+            <h6 className="testimonial-card-title">I don't really know</h6>
+            <p className="testimonial-card-description">
+              Honestly, this section is only here so I could have another accent
+              color section.
             </p>
           </div>
         </div>
-        <div class="masonry-item">
-          <div class="masonry-content">
-            <img
-              src="https://picsum.photos/450/450?image=200"
-              alt="N/A"
-            />
-            <h3 class="masonry-title">
-              Consequatur adipisci neque possimus quod ut quidem omnis numquam
-              dolorum
-            </h3>
-            <p class="masonry-description">
-              Consectetur adipisicing elit. Sit enim ipsam mollitia repellat
-              nemo, accusantium? Fugit id ipsam libero vitae quas perferendis,
-              delectus a amet perspiciatis iusto. Quia, quam, culpa.
-            </p>
-          </div>
-        </div>
-        <div class="masonry-item">
-          <div class="masonry-content">
-            <img
-              src="https://picsum.photos/450/280?image=300"
-              alt="N/A"
-            />
-            <h3 class="masonry-title">Adipisci alias ullam est accusamus</h3>
-            <p class="masonry-description">
-              Adipisci repellendus ratione laudantium nisi eaque voluptatem fuga
-              quod hic, explicabo amet at laborum maiores ducimus et a vel
-              quidem dolorem modi.
-            </p>
-          </div>
-        </div>
-        <div class="masonry-item">
-          <div class="masonry-content">
-            <img
-              src="https://picsum.photos/450/540?image=400"
-              alt="N/A"
-            />
-            <h3 class="masonry-title">
-              Dolor sit amet, consectetur adipisicing elit
-            </h3>
-            <p class="masonry-description">
-              Vitae est numquam, dolore, ipsum tempora molestiae. Ut optio natus
-              velit eaque tempora commodi dolor doloremque error quidem labore,
-              incidunt odit est nobis numquam. Ullam quas minima, neque modi
-              reiciendis consequuntur inventore!
-            </p>
-          </div>
-        </div>
-        <div class="masonry-item">
-          <div class="masonry-content">
-            <img
-              src="https://picsum.photos/450/380?image=500"
-              alt="N/A"
-            />
-            <h3 class="masonry-title">
-              Veritatis aut repellendus, quidem nesciunt consequatur nulla sed
-              itaque
-            </h3>
-            <p class="masonry-description">
-              Expedita voluptate similique ad harum dolorem nam ipsa repellat
-              quos, autem eius magni minima, asperiores nobis repudiandae ut
-              quibusdam atque! Delectus atque veniam labore suscipit ullam,
-              consequuntur dicta, tenetur est nulla, quod obcaecati similique?
-            </p>
-          </div>
-        </div>
-        <div class="masonry-item">
-          <div class="masonry-content">
-            <img
-              src="https://picsum.photos/450/300?image=600"
-              alt="N/A"
-            />
-            <h3 class="masonry-title">
-              Culpa quo animi ut temporibus, et distinctio facere perspiciatis
-              saepe sunt unde
-            </h3>
-            <p class="masonry-description">
-              Iusto magni quasi recusandae autem ipsum asperiores consequatur
-              explicabo, vero nam iste quas sequi reiciendis quod, quos!
-            </p>
-          </div>
-        </div>
-        <div class="masonry-item">
-          <div class="masonry-content">
-            <img
-              src="https://picsum.photos/450/400?image=700"
-              alt="N/A"
-            />
-            <h3 class="masonry-title">
-              Molestiae quod consectetur enim modi unde expedita dicta placeat?
-            </h3>
-            <p class="masonry-description">
-              Aliquam laudantium mollitia quo sint maxime omnis repellendus
-              beatae. Consequuntur molestias odio sapiente. Officia minima,
-              nisi! Tempora vero, architecto ducimus animi nostrum nobis aliquid
-              eligendi illo, facilis temporibus.
-            </p>
-          </div>
-        </div>
-        <div class="masonry-item">
-          <div class="masonry-content">
-            <img
-              src="https://picsum.photos/450/300?image=800"
-              alt="N/A"
-            />
-            <h3 class="masonry-title">
-              Sit amet, consectetur adipisicing elit. Incidunt, commodi!
-            </h3>
-            <p class="masonry-description">
-              Accusamus culpa maxime harum minus ipsa ea qui, blanditiis sequi
-              debitis. Temporibus quisquam consequatur dolor, aliquid odio nulla
-              dolorum animi quasi et! Reiciendis ipsum repellendus quaerat
-              explicabo, laboriosam amet, temporibus at sed voluptatibus, minima
-              quia.
-            </p>
-          </div>
-        </div>
-        
-        
-        
       </div>
     </div>
   );

@@ -48,8 +48,13 @@ function Nav() {
   if (isAuthenticated) {
     navItems = (
       <>
-        <Link className="nav-el" to="/profile">Profile</Link>
-        <span className="nav-el" onClick={() => logout({ returnTo: window.location.origin })}>
+        <Link className="nav-el" to="/profile">
+          Profile
+        </Link>
+        <span
+          className="nav-el"
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
           Log out
         </span>
       </>
@@ -57,8 +62,12 @@ function Nav() {
   } else {
     navItems = (
       <>
-        <span className="nav-el" onClick={() => loginWithRedirect()}>Log in</span>
-        <span className="nav-el" onClick={() => loginWithRedirect()}>Sign up</span>
+        <span className="nav-el" onClick={() => loginWithRedirect()}>
+          Log in
+        </span>
+        <span className="nav-el" onClick={() => loginWithRedirect()}>
+          Sign up
+        </span>
       </>
     );
   }
@@ -104,35 +113,36 @@ function Nav() {
                 <circle cx="10" cy="10" r="7" />
                 <line x1="21" y1="21" x2="15" y2="15" />
               </svg>
-              <form onSubmit={(e) => searchSubmitHandler(e)}>
-                <input
-                  className="suggestion-input"
-                  type="text"
-                  onChange={(e) => onChangeHandler(e.target.value)}
-                  value={searchText}
-                  onBlur={() => {
-                    setTimeout(() => {
-                      setSuggestions([]);
-                    }, 500);
-                  }}
-                />
-              </form>
+              <div>
+                <form onSubmit={(e) => searchSubmitHandler(e)}>
+                  <input
+                    className="suggestion-input"
+                    type="text"
+                    onChange={(e) => onChangeHandler(e.target.value)}
+                    value={searchText}
+                    onBlur={() => {
+                      setTimeout(() => {
+                        setSuggestions([]);
+                      }, 500);
+                    }}
+                  />
+                </form>
+                <div className="suggestion-container">
+                  {suggestions &&
+                    suggestions.map((suggestion, i) => (
+                      <div
+                        className="suggestion-box"
+                        key={i}
+                        onClick={() => {
+                          suggestionClickHandler();
+                        }}
+                      >
+                        <Link to={suggestion.key}> {suggestion.title}</Link>
+                      </div>
+                    ))}
+                </div>
               </div>
-              <div className="suggestion-container">
-                {suggestions &&
-                  suggestions.map((suggestion, i) => (
-                    <div
-                      className="suggestion-box"
-                      key={i}
-                      onClick={() => {
-                        suggestionClickHandler();
-                      }}
-                    >
-                      <Link to={suggestion.key}> {suggestion.title}</Link>
-                    </div>
-                  ))}
-              </div>
-            
+            </div>
             {isAuthenticated ? (
               <Link className="nav-el" to="/lists">
                 {" "}

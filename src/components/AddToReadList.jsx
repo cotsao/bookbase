@@ -41,7 +41,7 @@ function AddToReadList(props) {
         </option>
         {renderOptions}
       </select>
-      <button onClick={() => onButtonClick()}>Add to Selected List</button>
+      <button className="add-list-btn" onClick={() => onButtonClick()}>Add to Selected List</button>
     </div>
   );
 }
